@@ -1,0 +1,48 @@
+---
+name: CI
+on:
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  prep:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: npm/action-setup@v4
+        with:
+          run_install: false
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          cache: npm
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+  lint:
+    needs: [prep]
+    name: Find lint issues in app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: npm/action-setup@v4
+        with:
+          run_install: false
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          cache: npm
+      - name: Install dependencies
+        run: npm run install --frozen-lockfile
+      - name: Find issues
+        run: npm run lint --format stylish
+
+  build:
+    needs: [lint]
+    if: needs.lint.result == 'success'
+    uses: ./.github/workflows/build.yaml
+    name: Build
+    with:
+      tag: pr-${{ github.event.number }}
