@@ -21,7 +21,13 @@ const data = {
     {
       title: "Core",
       url: "#",
-      items: [{}],
+      items: [
+        {
+          title: "Introduction",
+          url: "#",
+          isActive: true,
+        },
+      ],
     },
   ],
 };
