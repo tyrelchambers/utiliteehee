@@ -1,109 +1,24 @@
 "use client";
+import ColourWrapper from "@/components/ColourWrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
+import {
+  generateAnalogousScheme,
+  generateComplimentaryScheme,
+  generateMonochrome,
+  generateTetradic,
+  generateTriadic,
+} from "@/utils/colourSchemes";
 import { hexToHsl } from "@/utils/convertHexToHsl";
 import { hexToRgb } from "@/utils/convertHexToRgb";
 import { hslToHex } from "@/utils/hslToHex";
-import { Copy } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { toast } from "sonner";
-
-const ColourWrapper = ({
-  label,
-  value,
-  onClick,
-}: {
-  label: string;
-  value: string;
-  onClick: () => void;
-}) => (
-  <button
-    className="flex bg-muted px-3 py-1 rounded-lg items-center gap-3 min-w-48 font-mono"
-    onClick={onClick}
-    type="button"
-  >
-    <Copy size={16} className="text-muted-foreground" />
-    <div className="flex flex-col">
-      <p className="uppercase text-xxs text-muted-foreground text-left">
-        {label}
-      </p>
-      <p className="text-foreground text-sm font-bold">{value}</p>
-    </div>
-  </button>
-);
 
 const copy = (text: string) => {
   navigator.clipboard.writeText(text);
   toast.success("Copied to clipboard");
-};
-
-const generateAnalogousScheme = (hex: string, colourCount: number) => {
-  const n = colourCount;
-  const degree = 15;
-  const [h, s, l] = hexToHsl(hex);
-
-  const shades = [];
-
-  const startingHue = h - (degree * n) / 2;
-  for (let index = 0; index < n; index++) {
-    shades.push([startingHue + degree * index, s, l]);
-  }
-
-  return shades;
-};
-
-const generateComplimentaryScheme = (hex: string) => {
-  const [h, s, l] = hexToHsl(hex);
-  return [
-    [h, s, l],
-    [h + 180, s, l],
-  ];
-};
-
-const generateMonochrome = (hex: string, colourCount: number) => {
-  const numOfColours = colourCount;
-  const [h, s, l] = hexToHsl(hex);
-  const colours = [];
-
-  for (let i = 0; i < numOfColours; i++) {
-    let newL;
-
-    if (i === 0) {
-      newL = (1 / numOfColours) * (i + 0.35) * 100;
-    } else {
-      newL = (1 / numOfColours) * i * 100;
-    }
-
-    colours.push([h, s, newL]);
-  }
-
-  return colours;
-};
-
-const generateTriadic = (hex: string) => {
-  const [h, s, l] = hexToHsl(hex);
-
-  const shades = [];
-
-  for (let index = 1; index <= 3; index++) {
-    const hue = h + 120 * index;
-    shades.push([hue, s, l]);
-  }
-
-  return shades;
-};
-
-const generateTetradic = (hex: string) => {
-  const [h, s, l] = hexToHsl(hex);
-
-  const shades = [];
-
-  for (let index = 1; index <= 4; index++) {
-    const hue = h + 90 * index;
-    shades.push([hue, s, l]);
-  }
-
-  return shades;
 };
 
 const ColourPalette = () => {
@@ -168,14 +83,24 @@ const ColourPalette = () => {
             </div>
           </div>
           <div className="mt-4 w-full max-w-44">
-            <p className="font-medium text-xs mb-1">Number of colours</p>
-            <Input
-              placeholder="Colours to generate"
-              value={colourCount}
-              type="number"
-              className="bg-muted"
-              onChange={(e) => setColourCount(parseInt(e.target.value))}
-            />
+            <p className="font-medium text-xs mb-1">
+              Number of colours - {colourCount}
+            </p>
+            <div className="flex gap-3 items-center">
+              <span className="text-muted-foreground font-mono text-sm font-bold">
+                1
+              </span>
+              <Slider
+                defaultValue={[colourCount]}
+                max={10}
+                step={1}
+                min={1}
+                onValueChange={(e) => setColourCount(e[0])}
+              />
+              <span className="text-muted-foreground font-mono text-sm font-bold">
+                10
+              </span>
+            </div>
           </div>
         </div>
 
@@ -284,7 +209,7 @@ const ColourPalette = () => {
           <div
             className={`grid`}
             style={{
-              gridTemplateColumns: `repeat(${3}, 1fr)`,
+              gridTemplateColumns: `repeat(${4}, 1fr)`,
             }}
           >
             {tetradic.map((mono, idx) => (
