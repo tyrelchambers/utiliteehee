@@ -84,13 +84,8 @@ body {
   .color-swatch:hover > p {
     transform: translateX(0.5rem);
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
+  .color-swatch {
+    @apply max-h-80 w-full aspect-square flex-1 relative;
   }
 }

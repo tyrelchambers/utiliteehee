@@ -37,20 +37,31 @@ const copy = (text: string) => {
   toast.success("Copied to clipboard");
 };
 
-const generateShades = (hex: string) => {
+const generateAnalogousScheme = (hex: string, colourCount: number) => {
+  const n = colourCount;
+  const degree = 15;
   const [h, s, l] = hexToHsl(hex);
 
   const shades = [];
 
-  for (let i = 0; i <= 10; i++) {
-    shades.push([h, s / 2, l / 2]);
+  const startingHue = h - (degree * n) / 2;
+  for (let index = 0; index < n; index++) {
+    shades.push([startingHue + degree * index, s, l]);
   }
 
   return shades;
 };
 
-const generateMonochrome = (hex: string) => {
-  const numOfColours = 6;
+const generateComplimentaryScheme = (hex: string) => {
+  const [h, s, l] = hexToHsl(hex);
+  return [
+    [h, s, l],
+    [h + 180, s, l],
+  ];
+};
+
+const generateMonochrome = (hex: string, colourCount: number) => {
+  const numOfColours = colourCount;
   const [h, s, l] = hexToHsl(hex);
   const colours = [];
 
@@ -69,15 +80,48 @@ const generateMonochrome = (hex: string) => {
   return colours;
 };
 
+const generateTriadic = (hex: string) => {
+  const [h, s, l] = hexToHsl(hex);
+
+  const shades = [];
+
+  for (let index = 1; index <= 3; index++) {
+    const hue = h + 120 * index;
+    shades.push([hue, s, l]);
+  }
+
+  return shades;
+};
+
+const generateTetradic = (hex: string) => {
+  const [h, s, l] = hexToHsl(hex);
+
+  const shades = [];
+
+  for (let index = 1; index <= 4; index++) {
+    const hue = h + 90 * index;
+    shades.push([hue, s, l]);
+  }
+
+  return shades;
+};
+
 const ColourPalette = () => {
   const [baseColour, setBaseColour] = React.useState("#000000");
-  const shades = useMemo(() => {
-    return generateShades(baseColour);
-  }, [baseColour]);
+  const [colourCount, setColourCount] = useState<number>(6);
+  const analagous = useMemo(() => {
+    return generateAnalogousScheme(baseColour, colourCount);
+  }, [baseColour, colourCount]);
   const monochrome = useMemo(
-    () => generateMonochrome(baseColour),
+    () => generateMonochrome(baseColour, colourCount),
+    [baseColour, colourCount]
+  );
+  const complimentary = useMemo(
+    () => generateComplimentaryScheme(baseColour),
     [baseColour]
   );
+  const triadic = useMemo(() => generateTriadic(baseColour), [baseColour]);
+  const tetradic = useMemo(() => generateTetradic(baseColour), [baseColour]);
 
   const hexConversion = hexToHsl(baseColour);
 
@@ -123,30 +167,58 @@ const ColourPalette = () => {
               />
             </div>
           </div>
+          <div className="mt-4 w-full max-w-44">
+            <p className="font-medium text-xs mb-1">Number of colours</p>
+            <Input
+              placeholder="Colours to generate"
+              value={colourCount}
+              type="number"
+              className="bg-muted"
+              onChange={(e) => setColourCount(parseInt(e.target.value))}
+            />
+          </div>
         </div>
 
         <div className="mt-6">
-          <h2 className="font-medium">Shades</h2>
-
-          <div className={`grid grid-cols-${shades.length}`}>
-            {/* {shades.map((shade, idx) => (
+          <header className="flex justify-between mb-4 items-center">
+            <h2 className="font-medium font-mono">Analogous</h2>
+            <Button>Export</Button>
+          </header>
+          <div
+            className={`grid`}
+            style={{
+              gridTemplateColumns: `repeat(${colourCount}, 1fr)`,
+            }}
+          >
+            {analagous.map((shade, idx) => (
               <div
                 key={hslToHex(shade[0], shade[1], shade[2]) + idx}
-                className="w-10 h-10 rounded-full border border-border"
+                className="color-swatch"
                 style={{
                   backgroundColor: hslToHex(shade[0], shade[1], shade[2]),
                 }}
-              />
-            ))} */}
+              >
+                {" "}
+                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                  {hslToHex(shade[0], shade[1], shade[2])}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
+
         <div className="mt-6">
           <h2 className="font-medium mb-2 font-mono">Monochrome</h2>
-          <div className={`flex`}>
+          <div
+            className={`grid`}
+            style={{
+              gridTemplateColumns: `repeat(${colourCount}, 1fr)`,
+            }}
+          >
             {monochrome.map((mono, idx) => (
               <div
                 key={hslToHex(mono[0], mono[1], mono[2]) + idx}
-                className="aspect-square flex-1 relative color-swatch"
+                className="color-swatch"
                 style={{
                   backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
                 }}
@@ -158,6 +230,79 @@ const ColourPalette = () => {
             ))}
           </div>
         </div>
+
+        <div className="mt-6">
+          <h2 className="font-medium mb-2 font-mono">Complimentary</h2>
+          <div
+            className={`grid`}
+            style={{
+              gridTemplateColumns: `repeat(${colourCount}, 1fr)`,
+            }}
+          >
+            {complimentary.map((mono, idx) => (
+              <div
+                key={hslToHex(mono[0], mono[1], mono[2]) + idx}
+                className="color-swatch"
+                style={{
+                  backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
+                }}
+              >
+                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                  {hslToHex(mono[0], mono[1], mono[2])}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h2 className="font-medium mb-2 font-mono">Triadic</h2>
+          <div
+            className={`grid`}
+            style={{
+              gridTemplateColumns: `repeat(${3}, 1fr)`,
+            }}
+          >
+            {triadic.map((mono, idx) => (
+              <div
+                key={hslToHex(mono[0], mono[1], mono[2]) + idx}
+                className="color-swatch"
+                style={{
+                  backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
+                }}
+              >
+                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                  {hslToHex(mono[0], mono[1], mono[2])}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h2 className="font-medium mb-2 font-mono">Tetradic</h2>
+          <div
+            className={`grid`}
+            style={{
+              gridTemplateColumns: `repeat(${3}, 1fr)`,
+            }}
+          >
+            {tetradic.map((mono, idx) => (
+              <div
+                key={hslToHex(mono[0], mono[1], mono[2]) + idx}
+                className="color-swatch"
+                style={{
+                  backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
+                }}
+              >
+                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                  {hslToHex(mono[0], mono[1], mono[2])}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <footer className="mt-6 w-full flex">
           <Button onClick={generateRandomColour}>Generate random</Button>
         </footer>
