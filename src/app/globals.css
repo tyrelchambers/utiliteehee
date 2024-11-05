@@ -80,6 +80,10 @@ body {
   .h1 {
     @apply text-4xl font-bold;
   }
+
+  .color-swatch:hover > p {
+    transform: translateX(0.5rem);
+  }
 }
 
 @layer base {

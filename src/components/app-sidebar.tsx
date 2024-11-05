@@ -160,6 +160,16 @@ const data = {
         },
       ],
     },
+    {
+      title: "Converters",
+      items: [
+        {
+          title: "Bits in an Integer",
+          url: "/generators/bits-in-an-integer",
+          isActive: false,
+        },
+      ],
+    },
   ],
 };
 

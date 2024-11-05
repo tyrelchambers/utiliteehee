@@ -1,21 +1,7 @@
-/**
- * Converts a hexadecimal color code to an HSL value.
- *
- * @param {string} hex - The hexadecimal color code (e.g. '#FFFFFF', 'FF0000').
- * @returns {Array<number>} An array with the hue, saturation, and lightness values of the HSL color.
- */
+import { hexToRgb } from "./convertHexToRgb";
+
 export function hexToHsl(hex: string) {
-  // Remove the '#' from the start of the string
-  hex = hex.replace(/^#/, "");
-
-  // Convert the hexadecimal value to an integer
-  const int = parseInt(hex, 16);
-
-  // Calculate the red, green, and blue values by shifting the bits of the integer
-  const r = (int >> 16) & 0xff;
-  const g = (int >> 8) & 0xff;
-  const b = int & 0xff;
-  console.log(int, r, g, b);
+  const [r, g, b] = hexToRgb(hex);
 
   // Convert RGB to HSL
   const max = Math.max(r, g, b);
@@ -53,5 +39,9 @@ export function hexToHsl(hex: string) {
     s = 0;
   }
 
-  return [h, (s * 100).toFixed(0), (l * 100).toFixed(0)];
+  return [
+    Number(h.toFixed(0)),
+    Number((s * 100).toFixed(0)),
+    Number((l * 100).toFixed(0)),
+  ];
 }
