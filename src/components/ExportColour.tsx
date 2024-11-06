@@ -21,9 +21,11 @@ import { Code, Copy, FileJson } from "lucide-react";
 import { ColourType } from "@/types";
 import { copy } from "@/utils/copy";
 import clsx from "clsx";
+import { hslToHex } from "@/utils/hslToHex";
+import RenderColourListItem from "./RenderColourListItem";
 
 interface Props {
-  colours: any;
+  colours: number[][];
 }
 
 export const exportActions: Record<string, any> = {
@@ -67,62 +69,77 @@ const ExportColour = ({ colours }: Props) => {
       <DialogTrigger asChild>
         <Button>Export</Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-screen-lg">
         <DialogHeader>
           <DialogTitle>Export colour palette</DialogTitle>
           <DialogDescription>
             Choose an option to export your colour palette.
           </DialogDescription>
         </DialogHeader>
-        <Select
-          onValueChange={(value) => setExport(value as ColourType)}
-          value={exportType}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Export as..." />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="hex">HEX</SelectItem>
-            <SelectItem value="rgb">RGB</SelectItem>
-            <SelectItem value="hsl">HSL</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex w-full gap-4">
+          <div className="flex flex-col flex-1 gap-4 max-w-lg">
+            <Select
+              onValueChange={(value) => setExport(value as ColourType)}
+              value={exportType}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Export as..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="hex">HEX</SelectItem>
+                <SelectItem value="rgb">RGB</SelectItem>
+                <SelectItem value="hsl">HSL</SelectItem>
+              </SelectContent>
+            </Select>
 
-        {exportType && (
-          <div className="grid grid-cols-3 gap-4">
-            {Object.entries(exportActions).map(([key, action]) => (
-              <button
-                type="button"
-                key={action.label}
-                className={clsx(
-                  "border border-border flex flex-col p-3 rounded-lg items-center gap-2 transition-all",
-                  selectedExport === key
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-muted "
-                )}
-                onClick={() => setSelectedExport(key)}
-              >
-                <span className="text-muted-foreground">{action.icon}</span>
-                <p className="font-medium">{action.label}</p>
-              </button>
-            ))}
+            {exportType && (
+              <div className="grid grid-cols-3 gap-4">
+                {Object.entries(exportActions).map(([key, action]) => (
+                  <button
+                    type="button"
+                    key={action.label}
+                    className={clsx(
+                      "border border-border flex flex-col p-3 rounded-lg items-center gap-2 transition-all",
+                      selectedExport === key
+                        ? "bg-primary text-primary-foreground"
+                        : "hover:bg-muted "
+                    )}
+                    onClick={() => setSelectedExport(key)}
+                  >
+                    <span className="text-muted-foreground">{action.icon}</span>
+                    <p className="font-medium">{action.label}</p>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {selectedExport && (
+              <section>
+                <div className="bg-muted rounded-xl p-3 relative">
+                  <RenderExportType type={selectedExport} output={output} />
+                  <button
+                    type="button"
+                    className="absolute bottom-3 right-3 flex items-center bg-foreground/10 px-2 py-1 rounded gap-2 font-mono text-sm hover:bg-foreground hover:text-background transition-all"
+                    onClick={() => copy(output)}
+                  >
+                    <Copy size={14} /> copy
+                  </button>
+                </div>
+              </section>
+            )}
           </div>
-        )}
 
-        {selectedExport && (
-          <section>
-            <div className="bg-muted rounded-xl p-3 relative">
-              <RenderExportType type={selectedExport} output={output} />
-              <button
-                type="button"
-                className="absolute bottom-3 right-3 flex items-center bg-foreground/10 px-2 py-1 rounded gap-2 font-mono text-sm hover:bg-foreground hover:text-background transition-all"
-                onClick={() => copy(output)}
-              >
-                <Copy size={14} /> copy
-              </button>
+          <section className="flex-1 border border-border p-4 rounded-lg">
+            <p className="font-medium text-sm mb-2">Colours</p>
+
+            <div className="flex flex-col gap-2">
+              {exportType &&
+                colours.map((c, i) => (
+                  <RenderColourListItem key={i} colour={c} type={exportType} />
+                ))}
             </div>
           </section>
-        )}
+        </div>
       </DialogContent>
     </Dialog>
   );
