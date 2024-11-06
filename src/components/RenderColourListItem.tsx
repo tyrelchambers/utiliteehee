@@ -1,4 +1,4 @@
-import { ColourType } from "@/types";
+import { ColourType, FormatOptions } from "@/types";
 import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
 import { hslToRgb } from "@/utils/hslToRgb";
@@ -24,9 +24,11 @@ const Wrapper = ({
 const RenderColourListItem = ({
   colour,
   type,
+  formatOptions,
 }: {
   colour: number[];
   type: ColourType;
+  formatOptions: FormatOptions;
 }) => {
   if (type === "hex") {
     return (
@@ -41,7 +43,9 @@ const RenderColourListItem = ({
 
   if (type === "rgb") {
     return (
-      <Wrapper onClick={() => copy(hslToRgb(colour[0], colour[1], colour[2]))}>
+      <Wrapper
+        onClick={() => copy(`rgb(${colour[0]}, ${colour[1]}, ${colour[2]})`)}
+      >
         <p className="font-mono text-sm">{`rgb(${colour[0]}, ${colour[1]}, ${colour[2]})`}</p>
 
         <Copy size={14} />
@@ -52,9 +56,19 @@ const RenderColourListItem = ({
   if (type === "hsl") {
     return (
       <Wrapper
-        onClick={() => copy(`hsl(${colour[0]}, ${colour[1]}%, ${colour[2]}%)`)}
+        onClick={() =>
+          copy(
+            `${!formatOptions.tailwind ? "hsl(" : ""}${colour[0]}, ${
+              colour[1]
+            }%, ${colour[2]}%${!formatOptions.tailwind ? ")" : ""}`
+          )
+        }
       >
-        <p className="font-mono text-sm">{`hsl(${colour[0]}, ${colour[1]}%, ${colour[2]}%)`}</p>
+        <p className="font-mono text-sm">{`${
+          !formatOptions.tailwind ? "hsl(" : ""
+        }${colour[0]}, ${colour[1]}%, ${colour[2]}%${
+          !formatOptions.tailwind ? ")" : ""
+        }`}</p>
 
         <Copy size={14} />
       </Wrapper>

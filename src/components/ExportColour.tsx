@@ -18,11 +18,12 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Code, Copy, FileJson } from "lucide-react";
-import { ColourType } from "@/types";
+import { ColourType, FormatOptions } from "@/types";
 import { copy } from "@/utils/copy";
 import clsx from "clsx";
 import { hslToHex } from "@/utils/hslToHex";
 import RenderColourListItem from "./RenderColourListItem";
+import { Switch } from "./ui/switch";
 
 interface Props {
   colours: number[][];
@@ -38,7 +39,8 @@ export const exportActions: Record<string, any> = {
   css: {
     label: "CSS",
     icon: <FileJson />,
-    action: (data: any, type: ColourType) => toCss(data, type),
+    action: (data: any, type: ColourType, formatOptions: FormatOptions) =>
+      toCss(data, type, formatOptions),
   },
   sass: {
     label: "SASS",
@@ -47,23 +49,34 @@ export const exportActions: Record<string, any> = {
   },
 };
 
+const showFormatOptionsFor = ["hsl"];
+
 const ExportColour = ({ colours }: Props) => {
   const [exportType, setExport] = useState<ColourType | "">("");
   const [selectedExport, setSelectedExport] = useState("");
-
+  const [formatOptions, setFormatOptions] = useState<FormatOptions>({
+    tailwind: false,
+  });
   const output = useMemo(() => {
     if (!selectedExport) {
       return;
     }
 
-    return exportActions[selectedExport]?.action(colours, exportType);
-  }, [selectedExport, exportType]);
+    return exportActions[selectedExport]?.action(
+      colours,
+      exportType,
+      formatOptions
+    );
+  }, [selectedExport, exportType, formatOptions]);
 
   const clearOptions = () => {
     setExport("");
     setSelectedExport("");
   };
 
+  const formatOptionsHandler = (option: typeof formatOptions) => {
+    setFormatOptions({ ...formatOptions, ...option });
+  };
   return (
     <Dialog onOpenChange={(open) => !open && clearOptions()}>
       <DialogTrigger asChild>
@@ -76,8 +89,8 @@ const ExportColour = ({ colours }: Props) => {
             Choose an option to export your colour palette.
           </DialogDescription>
         </DialogHeader>
-        <div className="flex w-full gap-4">
-          <div className="flex flex-col flex-1 gap-4 max-w-lg">
+        <div className="flex w-full gap-4 flex-col lg:flex-row">
+          <div className="flex flex-col flex-1 gap-4 lg:max-w-lg">
             <Select
               onValueChange={(value) => setExport(value as ColourType)}
               value={exportType}
@@ -135,9 +148,24 @@ const ExportColour = ({ colours }: Props) => {
             <div className="flex flex-col gap-2">
               {exportType &&
                 colours.map((c, i) => (
-                  <RenderColourListItem key={i} colour={c} type={exportType} />
+                  <RenderColourListItem
+                    key={i}
+                    colour={c}
+                    type={exportType}
+                    formatOptions={formatOptions}
+                  />
                 ))}
             </div>
+
+            {showFormatOptionsFor.includes(exportType) && (
+              <p className="text-sm flex gap-2 items-center mt-4">
+                <Switch
+                  onCheckedChange={(e) => formatOptionsHandler({ tailwind: e })}
+                  checked={formatOptions.tailwind}
+                />
+                Format for Tailwind
+              </p>
+            )}
           </section>
         </div>
       </DialogContent>

@@ -1,4 +1,4 @@
-import { ColourType } from "./types";
+import { ColourType, FormatOptions } from "./types";
 import { hslToHex } from "./utils/hslToHex";
 import { hslToRgb } from "./utils/hslToRgb";
 
@@ -27,7 +27,11 @@ export const toJson = (colors: number[][], type: ColourType) => {
   return payload;
 };
 
-export const toCss = (colors: number[][], type: ColourType) => {
+export const toCss = (
+  colors: number[][],
+  type: ColourType,
+  formatOptions: FormatOptions
+) => {
   let payload;
   switch (type) {
     case "hex":
@@ -42,7 +46,12 @@ export const toCss = (colors: number[][], type: ColourType) => {
       break;
     case "hsl":
       payload = `${colors
-        .map((c, i) => `--color-${i + 1}: hsl(${c[0]}, ${c[1]}%, ${c[2]}%);`)
+        .map(
+          (c, i) =>
+            `--color-${i + 1}: ${!formatOptions.tailwind ? "hsl(" : ""}${
+              c[0]
+            }, ${c[1]}%, ${c[2]}%${!formatOptions.tailwind ? ")" : ""};`
+        )
         .join("\n")}`;
       break;
   }
