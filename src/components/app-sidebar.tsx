@@ -32,6 +32,11 @@ const data = {
           isActive: false,
         },
         {
+          title: "Skibidi Ipsum",
+          url: "/generators/skibidi-ipsum",
+          isActive: false,
+        },
+        {
           title: "UUID",
           url: "/generators/uuid",
           isActive: false,

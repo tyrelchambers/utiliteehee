@@ -28,15 +28,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          data-domain="utiliteehee.com"
+          src="https://plausible.io/js/script.js"
+        ></script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SidebarProvider>
           <AppSidebar />
           <main className="flex-1">
-            <SidebarTrigger className="mx-6 my-3" />
-
-            <section className="p-8">{children}</section>
+            <header className="h-14 flex items-center">
+              <SidebarTrigger className="mx-6" />
+            </header>
+            <section className="p-8 h-[calc(100vh-3.5rem)]">{children}</section>
           </main>
         </SidebarProvider>
         <Toaster />
