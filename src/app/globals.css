@@ -88,4 +88,7 @@ body {
   .color-swatch {
     @apply max-h-80 w-full aspect-square flex-1 relative;
   }
+  .section.centered {
+    @apply flex flex-col justify-center items-center h-full -mt-[3.5rem];
+  }
 }

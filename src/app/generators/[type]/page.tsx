@@ -6,11 +6,7 @@ const Page = async ({ params }: PageProps) => {
   const type = (await params).type as Generator;
   const Gen = getGenerator(type);
 
-  return (
-    <div>
-      <Gen />
-    </div>
-  );
+  return <Gen />;
 };
 
 export default Page;

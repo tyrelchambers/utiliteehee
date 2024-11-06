@@ -27,8 +27,6 @@ export const getDailyMotivation = async () => {
     },
   }).then((res) => res.json());
 
-  console.log(response);
-
   if (!response) {
     throw new Error("Failed to fetch daily motivation: " + response);
   }
