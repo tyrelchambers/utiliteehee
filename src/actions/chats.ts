@@ -25,12 +25,13 @@ export const getDailyMotivation = async () => {
     next: {
       revalidate: 86400,
     },
-  });
+  }).then((res) => res.json());
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch daily motivation: " + response.body);
+  console.log(response);
+
+  if (!response) {
+    throw new Error("Failed to fetch daily motivation: " + response);
   }
 
-  const data = await response.json();
-  return data.choices[0].message.content;
+  return response.choices[0].message.content;
 };
