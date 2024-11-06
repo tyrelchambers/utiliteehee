@@ -25,7 +25,7 @@ export const generateComplimentaryScheme = (hex: string) => {
 
 export const generateMonochrome = (hex: string, colourCount: number) => {
   const numOfColours = colourCount;
-  const [h, s, l] = hexToHsl(hex);
+  const [h, s] = hexToHsl(hex);
   const colours = [];
 
   for (let i = 0; i < numOfColours; i++) {

@@ -16,7 +16,6 @@ import { hexToRgb } from "@/utils/convertHexToRgb";
 import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
 import React, { useMemo, useState } from "react";
-import { toast } from "sonner";
 
 const ColourPalette = () => {
   const [baseColour, setBaseColour] = React.useState("#000000");

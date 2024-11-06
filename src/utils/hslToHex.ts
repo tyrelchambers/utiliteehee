@@ -1,6 +1,3 @@
-import { hslToRgb } from "./hslToRgb";
-import { rgbToHex } from "./rgbToHex";
-
 export const hslToHex = (h: number, s: number, l: number) => {
   l /= 100;
   const a = (s * Math.min(l, 1 - l)) / 100;

@@ -9,7 +9,6 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { toCss, toJson, toSass } from "@/converters";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import {
   Select,
   SelectContent,
@@ -21,7 +20,6 @@ import { Code, Copy, FileJson } from "lucide-react";
 import { ColourType, FormatOptions } from "@/types";
 import { copy } from "@/utils/copy";
 import clsx from "clsx";
-import { hslToHex } from "@/utils/hslToHex";
 import RenderColourListItem from "./RenderColourListItem";
 import { Switch } from "./ui/switch";
 

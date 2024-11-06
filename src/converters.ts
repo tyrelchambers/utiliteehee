@@ -1,6 +1,5 @@
 import { ColourType, FormatOptions } from "./types";
 import { hslToHex } from "./utils/hslToHex";
-import { hslToRgb } from "./utils/hslToRgb";
 
 export const toJson = (colors: number[][], type: ColourType) => {
   console.log(colors);

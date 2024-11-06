@@ -1,7 +1,6 @@
 import { ColourType, FormatOptions } from "@/types";
 import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
-import { hslToRgb } from "@/utils/hslToRgb";
 import { Copy } from "lucide-react";
 import React from "react";
 
