@@ -37,9 +37,9 @@ jobs:
             org.opencontainers.image.source=https://github.com/${{ github.repository_owner }}/utiliteehee
           cache-to: type=gha,mode=max
           secrets: |
-            WEBUI_URL={{secrets.WEBUI_URL}}
-            OLLAMA_MODEL={{secrets.OLLAMA_MODEL}}
-            WEBUI_TOKEN={{ secrets.WEBUI_TOKEN }}
+            WEBUI_URL=${{secrets.WEBUI_URL}}
+            OLLAMA_MODEL=${{secrets.OLLAMA_MODEL}}
+            WEBUI_TOKEN=${{ secrets.WEBUI_TOKEN }}
 
   deploy:
     needs: [build-web]
