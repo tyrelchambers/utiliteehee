@@ -1,5 +1,6 @@
 "use client";
 import ColourWrapper from "@/components/ColourWrapper";
+import ExportColour from "@/components/ExportColour";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
@@ -12,14 +13,10 @@ import {
 } from "@/utils/colourSchemes";
 import { hexToHsl } from "@/utils/convertHexToHsl";
 import { hexToRgb } from "@/utils/convertHexToRgb";
+import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
 import React, { useMemo, useState } from "react";
 import { toast } from "sonner";
-
-const copy = (text: string) => {
-  navigator.clipboard.writeText(text);
-  toast.success("Copied to clipboard");
-};
 
 const ColourPalette = () => {
   const [baseColour, setBaseColour] = React.useState("#000000");
@@ -107,7 +104,7 @@ const ColourPalette = () => {
         <div className="mt-6">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Analogous</h2>
-            <Button>Export</Button>
+            <ExportColour colours={analagous} />
           </header>
           <div
             className={`grid`}
@@ -133,7 +130,10 @@ const ColourPalette = () => {
         </div>
 
         <div className="mt-6">
-          <h2 className="font-medium mb-2 font-mono">Monochrome</h2>
+          <header className="flex justify-between mb-4 items-center">
+            <h2 className="font-medium font-mono">Monochrome</h2>
+            <Button>Export</Button>
+          </header>
           <div
             className={`grid`}
             style={{
@@ -157,7 +157,10 @@ const ColourPalette = () => {
         </div>
 
         <div className="mt-6">
-          <h2 className="font-medium mb-2 font-mono">Complimentary</h2>
+          <header className="flex justify-between mb-4 items-center">
+            <h2 className="font-medium font-mono">Complimentary</h2>
+            <Button>Export</Button>
+          </header>
           <div
             className={`grid`}
             style={{
@@ -181,7 +184,10 @@ const ColourPalette = () => {
         </div>
 
         <div className="mt-6">
-          <h2 className="font-medium mb-2 font-mono">Triadic</h2>
+          <header className="flex justify-between mb-4 items-center">
+            <h2 className="font-medium font-mono">Triadic</h2>
+            <Button>Export</Button>
+          </header>
           <div
             className={`grid`}
             style={{
@@ -205,7 +211,10 @@ const ColourPalette = () => {
         </div>
 
         <div className="mt-6">
-          <h2 className="font-medium mb-2 font-mono">Tetradic</h2>
+          <header className="flex justify-between mb-4 items-center">
+            <h2 className="font-medium font-mono">Tetradic</h2>
+            <Button>Export</Button>
+          </header>
           <div
             className={`grid`}
             style={{
