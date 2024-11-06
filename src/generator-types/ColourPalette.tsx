@@ -132,7 +132,7 @@ const ColourPalette = () => {
         <div className="mt-6">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Monochrome</h2>
-            <Button>Export</Button>
+            <ExportColour colours={monochrome} />
           </header>
           <div
             className={`grid`}
@@ -159,7 +159,7 @@ const ColourPalette = () => {
         <div className="mt-6">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Complimentary</h2>
-            <Button>Export</Button>
+            <ExportColour colours={complimentary} />
           </header>
           <div
             className={`grid`}
@@ -186,7 +186,7 @@ const ColourPalette = () => {
         <div className="mt-6">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Triadic</h2>
-            <Button>Export</Button>
+            <ExportColour colours={triadic} />
           </header>
           <div
             className={`grid`}
@@ -213,7 +213,7 @@ const ColourPalette = () => {
         <div className="mt-6">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Tetradic</h2>
-            <Button>Export</Button>
+            <ExportColour colours={tetradic} />
           </header>
           <div
             className={`grid`}
