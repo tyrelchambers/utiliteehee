@@ -45,9 +45,9 @@ export function generateLoremIpsum(numParagraphs: number) {
 
   function generateParagraph() {
     const paragraph: string[] = [];
-    let minWordCount = 5;
-    let maxWordCount = 5;
-    let sentenceCount = 3;
+    const minWordCount = 5;
+    const maxWordCount = 5;
+    const sentenceCount = 3;
 
     function generateSentence() {
       const wordCount = Math.floor(
