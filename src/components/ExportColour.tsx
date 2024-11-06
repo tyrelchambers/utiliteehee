@@ -20,6 +20,7 @@ import {
 import { Code, Copy, FileJson } from "lucide-react";
 import { ColourType } from "@/types";
 import { copy } from "@/utils/copy";
+import clsx from "clsx";
 
 interface Props {
   colours: any;
@@ -56,8 +57,13 @@ const ExportColour = ({ colours }: Props) => {
     return exportActions[selectedExport]?.action(colours, exportType);
   }, [selectedExport, exportType]);
 
+  const clearOptions = () => {
+    setExport("");
+    setSelectedExport("");
+  };
+
   return (
-    <Dialog>
+    <Dialog onOpenChange={(open) => !open && clearOptions()}>
       <DialogTrigger asChild>
         <Button>Export</Button>
       </DialogTrigger>
@@ -88,7 +94,12 @@ const ExportColour = ({ colours }: Props) => {
               <button
                 type="button"
                 key={action.label}
-                className="border border-border flex flex-col p-3 rounded-lg items-center gap-2 hover:bg-muted transition-all"
+                className={clsx(
+                  "border border-border flex flex-col p-3 rounded-lg items-center gap-2 transition-all",
+                  selectedExport === key
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-muted "
+                )}
                 onClick={() => setSelectedExport(key)}
               >
                 <span className="text-muted-foreground">{action.icon}</span>
