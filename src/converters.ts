@@ -2,8 +2,6 @@ import { ColourType, FormatOptions } from "./types";
 import { hslToHex } from "./utils/hslToHex";
 
 export const toJson = (colors: number[][], type: ColourType) => {
-  console.log(colors);
-
   const payload: Record<string, string | number> = {};
 
   for (let i = 0; i < colors.length; i++) {

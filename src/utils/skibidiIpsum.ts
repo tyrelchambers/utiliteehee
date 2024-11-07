@@ -1,76 +1,80 @@
+const loremWords = [
+  "Saucy",
+  "G",
+  "lowkey",
+  "highkey",
+  "no cap",
+  "Periodt",
+  "Tea",
+  "Lit",
+  "Vibes",
+  "Salty",
+  "ate",
+  "rizz",
+  "delulu",
+  "skibidi",
+  "sigma",
+  "drip",
+  "bussin",
+  "gyat",
+  "mewing",
+  "cap",
+  "fanum tax",
+  "sus",
+  "goat",
+  "bet",
+  "basic",
+  "it's giving",
+  "bop",
+  "cringe",
+  "fire",
+  "big yikes",
+  "glow-up",
+  "flex",
+  "slay",
+  "ohio",
+  "yeet",
+  "ick",
+  "Lit",
+  "Mid",
+  "Big W",
+  "Big L",
+];
+
+function generateSentence() {
+  const minWordCount = 5;
+  const maxWordCount = 20;
+  let wordCount = Math.floor(
+    Math.random() * (maxWordCount - minWordCount) + minWordCount
+  );
+  const words: string[] = [];
+
+  for (let j = 0; j < wordCount; j++) {
+    let randomNum = Math.floor(Math.random() * (loremWords.length - 1) + 1);
+    let word = loremWords[randomNum];
+
+    word = word.charAt(0).toUpperCase() + word.slice(1);
+
+    if (j === wordCount - 1) {
+      word += ".";
+    }
+
+    words.push(word);
+  }
+
+  return words.join(" ");
+}
+
 export function generateLoremIpsum(numParagraphs: number) {
-  const loremWords = [
-    "Saucy",
-    "G",
-    "lowkey",
-    "highkey",
-    "no cap",
-    "Periodt",
-    "Tea",
-    "Lit",
-    "Vibes",
-    "Salty",
-    "ate",
-    "rizz",
-    "delulu",
-    "skibidi",
-    "sigma",
-    "drip",
-    "bussin",
-    "gyat",
-    "mewing",
-    "cap",
-    "fanum tax",
-    "sus",
-    "goat",
-    "bet",
-    "basic",
-    "it's giving",
-    "bop",
-    "cringe",
-    "fire",
-    "big yikes",
-    "glow-up",
-    "flex",
-    "slay",
-    "ohio",
-    "yeet",
-    "ick",
-    "Lit",
-    "Mid",
-    "Big W",
-    "Big L",
-  ];
   const paragraphs = [];
 
   function generateParagraph() {
     const paragraph: string[] = [];
-    const minWordCount = 5;
-    const maxWordCount = 5;
+
     const sentenceCount = 3;
 
-    function generateSentence() {
-      const wordCount = Math.floor(
-        Math.random() * (maxWordCount - minWordCount) + minWordCount
-      );
-
-      for (let j = 0; j < wordCount; j++) {
-        let word = loremWords[Math.floor(Math.random() * loremWords.length)];
-
-        word = word.charAt(0).toUpperCase() + word.slice(1);
-
-        if (j === wordCount - 1) {
-          word += ".";
-        }
-
-        paragraph.push(word);
-      }
-
-      return paragraph.join(" ");
-    }
-
     for (let i = 0; i < sentenceCount; i++) {
-      const sentence = generateSentence();
+      let sentence = generateSentence();
 
       paragraph.push(sentence);
     }
