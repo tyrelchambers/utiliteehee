@@ -15,8 +15,8 @@ const LoremIpsum = () => {
   }, [counter]);
 
   return (
-    <div className="section centered max-w-3xl mx-auto">
-      <h1 className="h1 mb-2 text-center">Skibidi Ipsum</h1>
+    <div className="section centered">
+      <h1 className="h1">Skibidi Ipsum</h1>
       <p className="text-muted-foreground mb-6 text-center">
         The dankest new ipsum generator inspired by TikTok culture. Skibidi your
         way to brand new dummy text straight from Ohio.
