@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { copy } from "@/utils/copy";
-import { generateLoremIpsum } from "@/utils/skibidiIpsum";
+import { generateSkibidiIpsum } from "@/utils/skibidiIpsum";
 import { Copy, Shuffle } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -11,7 +11,7 @@ const SkibidiIpsum = () => {
   const [text, setText] = useState<string[]>([]);
 
   useEffect(() => {
-    setText(generateLoremIpsum(3));
+    setText(generateSkibidiIpsum(3));
   }, [counter]);
 
   return (
