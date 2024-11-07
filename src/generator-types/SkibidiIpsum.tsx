@@ -4,12 +4,14 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { copy } from "@/utils/copy";
 import { generateLoremIpsum } from "@/utils/skibidiIpsum";
 import { Copy, Shuffle } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const SkibidiIpsum = () => {
   const [counter, setCounter] = useState(0);
-  const text = useMemo(() => {
-    return generateLoremIpsum(3);
+  const [text, setText] = useState<string[]>([]);
+
+  useEffect(() => {
+    setText(generateLoremIpsum(3));
   }, [counter]);
 
   return (
