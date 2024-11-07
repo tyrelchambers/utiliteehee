@@ -44,13 +44,13 @@ const loremWords = [
 function generateSentence() {
   const minWordCount = 5;
   const maxWordCount = 20;
-  let wordCount = Math.floor(
+  const wordCount = Math.floor(
     Math.random() * (maxWordCount - minWordCount) + minWordCount
   );
   const words: string[] = [];
 
   for (let j = 0; j < wordCount; j++) {
-    let randomNum = Math.floor(Math.random() * (loremWords.length - 1) + 1);
+    const randomNum = Math.floor(Math.random() * (loremWords.length - 1) + 1);
     let word = loremWords[randomNum];
 
     word = word.charAt(0).toUpperCase() + word.slice(1);
@@ -74,7 +74,7 @@ export function generateLoremIpsum(numParagraphs: number) {
     const sentenceCount = 3;
 
     for (let i = 0; i < sentenceCount; i++) {
-      let sentence = generateSentence();
+      const sentence = generateSentence();
 
       paragraph.push(sentence);
     }

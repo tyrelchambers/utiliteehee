@@ -4,7 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { copy } from "@/utils/copy";
 import { generateLoremIpsum } from "@/utils/skibidiIpsum";
 import { Copy, Shuffle } from "lucide-react";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SkibidiIpsum = () => {
   const [counter, setCounter] = useState(0);
