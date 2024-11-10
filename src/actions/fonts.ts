@@ -3,10 +3,13 @@ interface FetchFont {
   name: string;
   weight: string;
 }
+
+const FONT_HOST_URL = process.env.FONT_HOST_URL;
+
 export const fetchFont = async (font: FetchFont) => {
   const formattedName = font.name.replace(" ", "+");
   const resp = await fetch(
-    `${process.env.FONT_HOST_URL}/?fontName=${formattedName}&weight=${
+    `${FONT_HOST_URL}/?fontName=${formattedName}&weight=${
       font.weight || "regular"
     }`,
     {
