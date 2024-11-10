@@ -20,7 +20,7 @@ export interface Font {
 
 const getFonts = async () => {
   const fonts: Font = await fetch(
-    `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.GOOGLE_API_KEY}`,
+    `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDowpwb2Kg_riAn97y7Rcg9LqmxFSEr1SI`,
     {
       cache: "default",
     }
