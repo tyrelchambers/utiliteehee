@@ -20,7 +20,7 @@ interface FetchFont {
 const fetchFont = async (font: FetchFont) => {
   const formattedName = font.name.replace(" ", "+");
   const resp = await fetch(
-    `http://localhost:8080/?fontName=${formattedName}&weight=${
+    `${process.env.FONT_HOST_URL}/?fontName=${formattedName}&weight=${
       font.weight || "regular"
     }`,
     {
