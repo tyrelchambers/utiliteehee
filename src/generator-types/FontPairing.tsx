@@ -10,6 +10,11 @@ export interface Font {
     kind: string;
     version: string;
     lastModified: string;
+    axes: {
+      tag: string;
+      start: number;
+      end: number;
+    }[];
   }[];
 }
 
