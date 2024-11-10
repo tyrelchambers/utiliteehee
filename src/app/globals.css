@@ -78,7 +78,15 @@ body {
   }
 
   .h1 {
-    @apply text-4xl font-bold  mb-2 text-center;
+    @apply text-4xl font-bold  mb-2;
+  }
+
+  .h2 {
+    @apply text-2xl font-bold  mb-2;
+  }
+
+  .h3 {
+    @apply text-xl font-bold  mb-2;
   }
 
   .color-swatch:hover > p {

@@ -22,7 +22,7 @@ const LoremIpsum = () => {
         way to brand new dummy text straight from Ohio.
       </p>
       <div className="flex"></div>
-      <div className="rounded-xl border border-border p-3">
+      <div className="rounded-xl border border-border p-3 w-full">
         <ScrollArea className="prose flex flex-col gap-3 h-[300px]  ">
           {text.map((t, i) => (
             <p className="text-foreground" key={i}>
