@@ -4,7 +4,10 @@ interface FetchFont {
   weight: string;
 }
 
-const FONT_HOST_URL = process.env.FONT_HOST_URL;
+const FONT_HOST_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8080"
+    : "https://font.utiliteehee.com";
 
 export const fetchFont = async (font: FetchFont) => {
   const formattedName = font.name.replace(" ", "+");
