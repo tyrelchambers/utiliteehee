@@ -3,9 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Label } from "./ui/label";
 import { Font } from "@/generator-types/FontPairing";
 import FontSelector from "./FontSelector";
-import localFont from "next/font/local";
 import { generateSkibidiIpsum } from "@/utils/skibidiIpsum";
-import Link from "next/link";
 import FontStyle from "./FontStyle";
 import { fontWeights } from "@/utils/fontWeights";
 import { Switch } from "./ui/switch";
@@ -240,6 +238,7 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
             <div className="flex gap-3 flex-wrap">
               {popularFonts.map((f) => (
                 <Button
+                  key={f.family}
                   variant="secondary"
                   onClick={() =>
                     setHeadingFont({
@@ -259,6 +258,7 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
             <div className="flex gap-3 flex-wrap">
               {popularFonts.map((f) => (
                 <Button
+                  key={f.family}
                   variant="secondary"
                   onClick={() =>
                     setParagraphFont({

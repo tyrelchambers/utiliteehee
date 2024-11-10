@@ -51,7 +51,7 @@ const Create = () => {
   return (
     <section className="pt-6">
       <p className="font-medium mb-2">
-        Select the type of UUID you'd like to create
+        Select the type of UUID you&apos;d like to create
       </p>
       <div className="flex flex-col gap-3">
         <Select onValueChange={(v) => setType(v as Type)} defaultValue={type}>
