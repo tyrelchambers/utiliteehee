@@ -89,6 +89,15 @@ body {
     @apply text-xl font-bold  mb-2;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-faculty;
+  }
+
   .color-swatch:hover > p {
     transform: translateX(0.5rem);
   }

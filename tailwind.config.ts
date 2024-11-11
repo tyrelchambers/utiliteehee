@@ -68,6 +68,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
+        faculty: ["var(--font-faculty)"],
       },
       borderRadius: {
         lg: "var(--radius)",
