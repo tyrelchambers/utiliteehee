@@ -12,55 +12,91 @@ import {
 import React from "react";
 import QRCode from "qrcode";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const formSchema = z.object({
+  text: z.string().min(1, {
+    message: "Text is required",
+  }),
+  width: z.number().optional(),
+});
 
 const QRCodeGen = () => {
   const [generatedQrCode, setGeneratedQrCode] = React.useState("");
-  const [qrText, setQrText] = React.useState("");
-  const makeQRCode = async (text: string, width?: number) => {
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      text: "",
+      width: 200,
+    },
+  });
+
+  const makeQRCode = async (data: z.infer<typeof formSchema>) => {
+    const { text, width } = data;
     const qrCode = await QRCode.toDataURL(text, {
       errorCorrectionLevel: "M",
       width: width ?? 200,
     });
     setGeneratedQrCode(qrCode);
   };
+
   return (
     <div className="section centered">
       <h1 className="h1 mb-6">QR Code</h1>
 
-      <div className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl mx-auto">
-        <div className="flex flex-col gap-3">
-          <Label>Text</Label>
-          <Input
-            type="text"
-            className="font-mono"
-            placeholder="https://example.com or text"
-            value={qrText}
-            onChange={(e) => setQrText(e.target.value)}
+      <Form {...form}>
+        <form
+          className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl mx-auto"
+          onSubmit={form.handleSubmit(makeQRCode)}
+        >
+          <FormField
+            name="text"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Text</FormLabel>
+                <Input
+                  className="font-mono"
+                  placeholder="https://example.com or text"
+                  {...field}
+                />
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
 
-        <div className="flex flex-col gap-3">
-          <Label>Size</Label>
-          <Select defaultValue="small">
-            <SelectTrigger>
-              <SelectValue placeholder="Select a size" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="small">Small</SelectItem>
-              <SelectItem value="medium">Medium</SelectItem>
-              <SelectItem value="large">Large</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {generatedQrCode && (
-          <div className="mx-auto">
-            <Image src={generatedQrCode} alt="" width={200} height={200} />
+          <div className="flex flex-col gap-3">
+            <Label>Size</Label>
+            <Select defaultValue="small">
+              <SelectTrigger>
+                <SelectValue placeholder="Select a size" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="small">Small</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="large">Large</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-        )}
 
-        <Button onClick={() => makeQRCode(qrText)}>Generate QR code</Button>
-      </div>
+          {generatedQrCode && (
+            <div className="mx-auto">
+              <Image src={generatedQrCode} alt="" width={200} height={200} />
+            </div>
+          )}
+
+          <Button>Generate QR code</Button>
+        </form>
+      </Form>
     </div>
   );
 };
