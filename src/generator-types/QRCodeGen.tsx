@@ -1,5 +1,4 @@
 "use client";
-import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,14 +10,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import QRCode from "qrcode";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -196,7 +194,7 @@ const QRCodeGen = () => {
 
           <FormField
             name="errorLevel"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormLabel>Error Correction Level</FormLabel>
                 <Select
