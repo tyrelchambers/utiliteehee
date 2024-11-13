@@ -24,7 +24,7 @@ const IconSearchModal = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex justify-between items-center w-full bg-muted pl-4">
+        <div className="flex justify-between items-center w-full bg-muted pl-4 rounded-lg">
           <p className="font-medium text-xs">Add an icon</p>
           <Button variant="ghost" size="sm" className="pr-4">
             <Search className="h-4 w-4" />
