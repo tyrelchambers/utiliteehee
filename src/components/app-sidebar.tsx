@@ -52,12 +52,6 @@ const data = {
           url: "/generators/qr-code",
           isActive: false,
         },
-
-        {
-          title: "Image Resizer",
-          url: "/generators/image-resizer",
-          isActive: false,
-        },
         {
           title: "Text Case Converter",
           url: "/generators/text-case-converter",
