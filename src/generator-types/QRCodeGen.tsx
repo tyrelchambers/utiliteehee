@@ -118,6 +118,14 @@ const QRCodeGen = () => {
     },
   });
 
+  useEffect(() => {
+    return () => {
+      if (canvasRef.current) {
+        URL.revokeObjectURL(canvasRef.current.toDataURL());
+      }
+    };
+  }, []);
+
   const makeQRCode = async (data: z.infer<typeof formSchema>) => {
     if (typeof window === "undefined") return;
 
@@ -267,14 +275,15 @@ const QRCodeGen = () => {
               </p>
             </div>
           )}
-
           <footer className="flex justify-between items-center">
             {canvasRef.current && (
               <Button variant="secondary" onClick={downloadQrCode}>
                 Download as PNG
               </Button>
             )}
-            <Button>Generate QR code</Button>
+            <Button>
+              {canvasRef.current ? "Regenerate" : "Generate"} QR code
+            </Button>
           </footer>
         </form>
       </Form>
