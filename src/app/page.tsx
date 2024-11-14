@@ -15,7 +15,11 @@ export default async function Home() {
   const motivation = await getDailyMotivation();
 
   return (
-    <section>
+    <section className="overflow-hidden">
+      <div className="orange-circle"></div>
+      <header className="w-full flex items-center justify-center h-20 ">
+        <p className="font-mono text-foreground">Utiliteehee</p>
+      </header>
       <section className="max-w-screen-xl mx-auto w-full min-h-[900px] flex flex-col justify-center items-center">
         <h1 className="h1 text-6xl text-center mb-10">
           Here lies many a great Utilitees. Enjoy.
@@ -26,7 +30,7 @@ export default async function Home() {
           learn something along the way. I hope you enjoy your stay here.
           Godspeed, pumpkin.
         </p>
-        <div className="items-center flex gap-10 mx-auto mt-20 border border-border p-4 rounded-3xl">
+        <div className="items-center flex gap-10 mx-auto mt-20 border border-border p-4 rounded-3xl bg-black/20 ">
           <StyledIcon
             icon={faMessageDots}
             classNames={{

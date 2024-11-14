@@ -109,3 +109,15 @@ body {
     @apply flex flex-col justify-center items-center h-full -mt-[3.5rem] max-w-3xl mx-auto;
   }
 }
+
+.orange-circle {
+  width: 2000px;
+  height: 2000px;
+  border-radius: 100%;
+  transform: translate(13%, -100%);
+  position: absolute;
+  z-index: -1;
+  filter: blur(1000px);
+  opacity: 1;
+  background: radial-gradient(circle in oklab, hsl(26, 100%, 50%) 80%, black);
+}
