@@ -1,0 +1,144 @@
+.nav-item-block {
+  width: 100%;
+  max-width: 300px;
+  min-height: 300px;
+  overflow: hidden;
+  & h3 {
+    @apply text-foreground text-3xl mb-3;
+  }
+
+  @apply border-2 border-border bg-background p-6 rounded-3xl;
+}
+
+.styled-icon {
+  width: 23px !important;
+  height: 23px !important;
+  color: white;
+  position: relative;
+  z-index: 99;
+  @apply p-[calc(1.3rem)] rounded-full shadow-lg;
+}
+
+.icon-overlay-1 {
+  content: "";
+  display: block;
+  width: calc(30px + 31px);
+  height: calc(30px + 31px);
+  background: linear-gradient(to top left in oklab, black 30%, hsl(0, 0%, 27%));
+  position: absolute;
+  transform: translate(0, 0);
+  @apply rounded-full;
+}
+
+.icon-wrapper:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 40%;
+  background-image: linear-gradient(
+    to bottom right,
+    #fff,
+    rgba(255, 94, 0, 0.6)
+  );
+  pointer-events: none; /* prevent the overlay from affecting the SVG */
+  z-index: 199;
+  mix-blend-mode: multiply;
+}
+
+.icon-background {
+  width: calc(30px + 35px);
+  height: calc(30px + 35px);
+  background: linear-gradient(
+    to top left in oklab,
+    black 30%,
+    rgba(255, 255, 255, 0.55)
+  );
+
+  @apply rounded-full;
+}
+
+.light-ray {
+  width: 80px;
+  height: 80px;
+  filter: blur(50px);
+  left: -40px;
+  top: -70px;
+  opacity: 0.4;
+  @apply bg-white;
+}
+
+.nav-item-block.gradient-1 {
+  background: linear-gradient(330deg in oklab, rgba(255, 94, 0, 0.3), black);
+}
+
+.nav-item-block.gradient-1 {
+  background: linear-gradient(
+    330deg in oklab,
+    rgba(255, 94, 0, 0.6),
+    black 40%
+  );
+}
+
+.black-base {
+  position: absolute;
+  inset: 15;
+  background: black;
+  z-index: 6;
+  filter: blur(20px);
+  @apply rounded-xl;
+}
+.block-body {
+  position: relative;
+  z-index: 9;
+}
+
+.base-gradient-1 {
+  background: linear-gradient(
+    -20deg in oklab,
+    rgba(255, 94, 0, 0.5),
+    transparent 60%
+  );
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+
+.base-gradient-2 {
+  background: linear-gradient(
+    -30deg in oklab,
+    rgba(255, 94, 0, 0.5),
+    transparent 30%
+  );
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.base-circle-1 {
+  background: rgba(255, 94, 0, 0.5);
+  width: 90px;
+  height: 90px;
+  z-index: 7;
+  border-radius: 100%;
+  filter: blur(40px);
+  bottom: 0;
+  right: 0;
+}
+
+.base-circle-2 {
+  background: rgba(255, 94, 0, 0.5);
+  width: 140px;
+  height: 90px;
+  z-index: 8;
+  border-radius: 100%;
+  filter: blur(40px);
+  bottom: -40px;
+  left: 50px;
+}
