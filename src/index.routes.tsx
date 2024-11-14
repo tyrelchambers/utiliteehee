@@ -1,6 +1,5 @@
 import {
   faGhost,
-  faPalette,
   faSwatchbook,
   faFaceSunglasses,
   faBarcodeRead,
@@ -9,10 +8,34 @@ import {
   faInputText,
   faSwords,
   faBriefcase,
+  faHandHorns,
+  faFaceShush,
+  faSignature,
+  faPenNib,
+  faCloudMusic,
+  faMusicNote,
+  faBolt,
+  faSword,
+  faInputNumeric,
+  fa7,
+  faKey,
 } from "@fortawesome/pro-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 
-export const data = {
+interface Data {
+  navMain: {
+    title: string;
+    items: {
+      title: string;
+      description?: string;
+      icon?: FontAwesomeIconProps["icon"];
+      url: string;
+      isActive: boolean;
+    }[];
+  }[];
+}
+
+export const data: Data = {
   navMain: [
     {
       title: "Design & Content",
@@ -97,21 +120,29 @@ export const data = {
       items: [
         {
           title: "Catchphrase",
+          description: "Generate a catchy catchphrase",
+          icon: faHandHorns,
           url: "/generators/catchphrase",
           isActive: false,
         },
         {
           title: "Excuse",
+          description: "Generate an excuse for your next big day off work",
+          icon: faFaceShush,
           url: "/generators/excuse",
           isActive: false,
         },
         {
           title: "Nickname",
+          description: "Need a nickname? Try this.",
+          icon: faSignature,
           url: "/generators/nickname",
           isActive: false,
         },
         {
           title: "Writing Prompt",
+          description: "Write your next big hit with this cool AI wrapper.",
+          icon: faPenNib,
           url: "/generators/writing-prompt",
           isActive: false,
         },
@@ -122,11 +153,15 @@ export const data = {
       items: [
         {
           title: "Mood Playlist",
+          description: "Generate a playlist based on your mood",
+          icon: faCloudMusic,
           url: "/generators/mood-playlist",
           isActive: false,
         },
         {
           title: "Chord Progression",
+          description: "Generate a chord progression from a key",
+          icon: faMusicNote,
           url: "/generators/chord-progression",
           isActive: false,
         },
@@ -137,11 +172,15 @@ export const data = {
       items: [
         {
           title: "Daily Motivation",
+          description: "Get some motivation to start your day",
+          icon: faBolt,
           url: "/generators/daily-motivation",
           isActive: false,
         },
         {
           title: "Random Roman Empire Fact",
+          description: "Get a random fact about the Roman Empire!",
+          icon: faSword,
           url: "/generators/roman-empire-fact",
           isActive: false,
         },
@@ -152,16 +191,22 @@ export const data = {
       items: [
         {
           title: "Age Calculator",
+          description: "Calculate an age from DOB",
+          icon: faInputNumeric,
           url: "/generators/age-calculator",
           isActive: false,
         },
         {
           title: "Random Number",
+          description: "Generate a random number",
+          icon: fa7,
           url: "/generators/random-number",
           isActive: false,
         },
         {
           title: "Password",
+          icon: faKey,
+          description: "Generate a password (random string let's be real.",
           url: "/generators/password",
           isActive: false,
         },

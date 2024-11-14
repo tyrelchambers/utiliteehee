@@ -4,6 +4,7 @@ import LightRay from "@/components/LightRay";
 import StyledIcon from "@/components/StyledIcon";
 import StylisticWrapper from "@/components/StylisticWrapper";
 import { buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { data } from "@/index.routes";
 import { faMessageDots } from "@fortawesome/pro-solid-svg-icons";
 import {
@@ -20,7 +21,7 @@ export default async function Home() {
       <header className="w-full flex items-center justify-center h-20 ">
         <p className="font-mono text-foreground">Utiliteehee</p>
       </header>
-      <section className="max-w-screen-xl mx-auto w-full min-h-[900px] flex flex-col justify-center items-center">
+      <section className="max-w-screen-xl mx-auto w-full min-h-[700px] flex flex-col justify-center items-center">
         <h1 className="h1 text-6xl text-center mb-10">
           Here lies many a great Utilitees. Enjoy.
         </h1>
@@ -47,6 +48,14 @@ export default async function Home() {
             Suggest a feature
           </a>
         </div>
+      </section>
+
+      <section className="section mx-auto max-w-screen-2xl my-20 bg-black/20 rounded-3xl p-10 border border-border shadow-xl">
+        <input
+          type="search"
+          placeholder="Search for a Utiliteehee"
+          className="bg-transparent outline-none text-foreground placeholder:text-foreground/70 text-2xl w-full"
+        />
       </section>
       <section className="flex flex-col gap-20 max-w-screen-2xl mx-auto">
         {data.navMain.map((item) => (
