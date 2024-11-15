@@ -20,7 +20,7 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const facultyFont = Faculty_Glyphic({
+const facultyFont = Faculty_Glyphic({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-faculty",
