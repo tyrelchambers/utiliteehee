@@ -532,14 +532,14 @@ const sidebarMenuButtonVariants = cva(
   }
 );
 
-const isActive = (url: string) => window.location.pathname === url;
+const isActive = (url?: string) => window.location.pathname === url;
 
 const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button"> & {
     asChild?: boolean;
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
-    itemUrl: string;
+    itemUrl?: string;
   } & VariantProps<typeof sidebarMenuButtonVariants>
 >(
   (
