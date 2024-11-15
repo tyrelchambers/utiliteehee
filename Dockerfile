@@ -26,6 +26,7 @@ RUN --mount=type=secret,id=WEBUI_TOKEN,env=WEBUI_TOKEN \
   --mount=type=secret,id=WEBUI_URL,env=WEBUI_URL \
   --mount=type=secret,id=OLLAMA_MODEL,env=OLLAMA_MODEL \ 
   --mount=type=secret,id=FONT_HOST_URL,env=FONT_HOST_URL \
+  --mount=type=secret,id=FONTAWESOME_PACKAGE_TOKEN,env=FONTAWESOME_PACKAGE_TOKEN \
     npm run build
 
 # Production image, copy all the files and run next
