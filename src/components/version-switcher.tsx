@@ -5,8 +5,6 @@ import { GalleryVerticalEnd } from "lucide-react";
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -14,7 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { CheckIcon, CaretSortIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 
 export function VersionSwitcher() {
   return (
