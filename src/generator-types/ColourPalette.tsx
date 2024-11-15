@@ -1,6 +1,8 @@
 "use client";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
+import FireGradient from "@/components/FireGradient";
+import LightRay from "@/components/LightRay";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
@@ -41,12 +43,12 @@ const ColourPalette = () => {
   };
 
   return (
-    <div>
-      <h1 className="h1 mb-2">Colour Palette</h1>
-      <p className="text-muted-foreground mb-6">
-        Generate a new colour palette
-      </p>
-      <section className="p-4 rounded-xl border border-border flex flex-col">
+    <div className="section">
+      <header className="mb-10">
+        <h1 className="h1 mb-2">Colour Palette</h1>
+        <p className="text-muted-foreground">Generate a new colour palette</p>
+      </header>
+      <section className="flex flex-col">
         <div className="flex flex-col">
           <div className="flex items-center">
             <Input
@@ -79,7 +81,7 @@ const ColourPalette = () => {
             </div>
           </div>
           <div className="mt-4 w-full max-w-44">
-            <p className="font-medium text-xs mb-1">
+            <p className="font-medium text-xs mb-1 text-foreground">
               Number of colours - {colourCount}
             </p>
             <div className="flex gap-3 items-center">
@@ -120,7 +122,7 @@ const ColourPalette = () => {
                 }}
               >
                 {" "}
-                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                <p className="text-foreground mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
                   {hslToHex(shade[0], shade[1], shade[2])}
                 </p>
               </div>
@@ -147,7 +149,7 @@ const ColourPalette = () => {
                   backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
                 }}
               >
-                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                <p className="text-foreground mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
                   {hslToHex(mono[0], mono[1], mono[2])}
                 </p>
               </div>
@@ -174,7 +176,7 @@ const ColourPalette = () => {
                   backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
                 }}
               >
-                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                <p className="text-foreground mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
                   {hslToHex(mono[0], mono[1], mono[2])}
                 </p>
               </div>
@@ -201,7 +203,7 @@ const ColourPalette = () => {
                   backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
                 }}
               >
-                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                <p className="text-foreground mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
                   {hslToHex(mono[0], mono[1], mono[2])}
                 </p>
               </div>
@@ -228,7 +230,7 @@ const ColourPalette = () => {
                   backgroundColor: `${hslToHex(mono[0], mono[1], mono[2])}`,
                 }}
               >
-                <p className="text-background mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
+                <p className="text-foreground mix-blend-difference font-mono absolute bottom-2 left-4 transition-all">
                   {hslToHex(mono[0], mono[1], mono[2])}
                 </p>
               </div>

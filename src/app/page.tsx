@@ -66,6 +66,7 @@ export default async function Home() {
                 <StylisticWrapper
                   key={item.title}
                   className="w-full max-w-screen-lg"
+                  href={item.url}
                 >
                   {item?.icon && (
                     <StyledIcon
