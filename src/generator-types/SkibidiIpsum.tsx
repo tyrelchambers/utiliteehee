@@ -15,14 +15,14 @@ const SkibidiIpsum = () => {
   }, [counter]);
 
   return (
-    <div className="section centered max-w-3xl mx-auto">
-      <h1 className="h1 mb-2 text-center">Skibidi Ipsum</h1>
-      <p className="text-muted-foreground mb-6 text-center">
+    <div className="section max-w-screen-xl">
+      <h1 className="h1 mb-2">Skibidi Ipsum</h1>
+      <p className="text-muted-foreground mb-6">
         The dankest new ipsum generator inspired by TikTok culture. Skibidi your
         way to brand new dummy text straight from Ohio.
       </p>
       <div className="flex"></div>
-      <div className="rounded-xl border border-border p-3 w-full">
+      <div className="rounded-xl border border-border p-3 w-full bg-card">
         <ScrollArea className="prose flex flex-col gap-3 h-[300px]  ">
           {text.map((t, i) => (
             <p className="text-foreground" key={i}>

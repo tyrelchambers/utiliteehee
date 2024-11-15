@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+import "./utilitee.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Faculty_Glyphic } from "next/font/google";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -20,6 +24,7 @@ export const facultyFont = Faculty_Glyphic({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-faculty",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <script
           defer
@@ -42,17 +47,9 @@ export default function RootLayout({
         ></script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${facultyFont.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${facultyFont.variable} antialiased bg-background`}
       >
-        <SidebarProvider>
-          <AppSidebar />
-          <main className="flex-1">
-            <header className="h-14 flex items-center">
-              <SidebarTrigger className="mx-6" />
-            </header>
-            <section className="p-8 h-[calc(100vh-3.5rem)]">{children}</section>
-          </main>
-        </SidebarProvider>
+        <main>{children}</main>
         <Toaster />
       </body>
     </html>

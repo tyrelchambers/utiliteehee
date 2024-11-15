@@ -113,13 +113,6 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
       `}</style>
       <div className="flex flex-col gap-8">
         <section className="border border-border p-4 rounded-xl bg-muted/30 h-fit">
-          <header className="mb-6">
-            <h2 className="h2 ">Fonts</h2>
-            <p className="text-muted-foreground">
-              This font pairing utiliteehee uses Google fonts to deliver you the
-              best fonts in the universe.
-            </p>
-          </header>
           <div className="flex gap-4">
             <div className="flex flex-col w-full gap-6">
               <div className="flex flex-col gap-2 ">

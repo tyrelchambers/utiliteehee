@@ -15,13 +15,13 @@ const LoremIpsum = () => {
   }, [counter]);
 
   return (
-    <div className="section centered">
+    <div className="section max-w-screen-xl">
       <h1 className="h1">Lorem Ipsum</h1>
-      <p className="text-muted-foreground mb-6 text-center">
+      <p className="text-muted-foreground mb-6">
         Generate some Lorem Ipsum text for your next big project.
       </p>
       <div className="flex"></div>
-      <div className="rounded-xl border border-border p-3 w-full">
+      <div className="rounded-xl border border-border p-3 w-full bg-card">
         <ScrollArea className="prose flex flex-col gap-3 h-[300px]  ">
           {text.map((t, i) => (
             <p className="text-foreground" key={i}>

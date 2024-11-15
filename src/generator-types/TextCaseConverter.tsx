@@ -74,7 +74,7 @@ const TextCaseConverter = () => {
   }
 
   return (
-    <section className="section centered w-full max-w-screen-sm">
+    <section className="section max-w-screen-lg">
       <h1 className="h1 mb-10">Text Case Converter</h1>
       <Form {...form}>
         <form
@@ -86,7 +86,7 @@ const TextCaseConverter = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Input text</FormLabel>
-                <Textarea {...field} />
+                <Textarea rows={7} {...field} />
                 <FormMessage />
               </FormItem>
             )}
