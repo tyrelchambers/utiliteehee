@@ -6,7 +6,7 @@ import { faMessageDots } from "@fortawesome/pro-solid-svg-icons";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { query: string };
+  searchParams: Promise<{ query: string }>;
 }) {
   const query = await searchParams;
   return (
