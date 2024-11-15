@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { SearchForm } from "@/components/search-form";
 import { VersionSwitcher } from "@/components/version-switcher";
@@ -21,10 +22,16 @@ import {
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { data } from "@/index.routes";
 import LightRay from "./LightRay";
+import { usePathname } from "next/navigation";
 
 // This is sample data.
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname();
+  const isActive = (url: string) => {
+    return pathname === url;
+  };
+
   return (
     <Sidebar {...props}>
       <LightRay />
@@ -56,7 +63,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenu>
                     {item.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild itemUrl={item.url}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={isActive(item.url)}
+                        >
                           <a href={item.url}>{item.title}</a>
                         </SidebarMenuButton>
                       </SidebarMenuItem>

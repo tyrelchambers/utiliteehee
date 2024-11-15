@@ -14,6 +14,8 @@ import { data } from "@/index.routes";
 const CustomBreadcrumb = () => {
   const [currentPath, setCurrentPath] = useState<string | undefined>("");
   useEffect(() => {
+    if (!window) return;
+
     const path = window.location.pathname;
     const entry = data.navMain.find((item) =>
       item.items.some((i) => i.url === path)
