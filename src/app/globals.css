@@ -43,7 +43,7 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 224 30% 4%;
     --foreground: 0 0% 95%;
     --card: 0 0% 5.9%;
     --card-foreground: 0 0% 98%;
@@ -67,7 +67,7 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
+    --sidebar-background: 224 20% 9%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
@@ -139,4 +139,33 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.search:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1240px;
+  height: 300px;
+  right: -1040px;
+  top: -100px;
+  z-index: -1;
+  background: url("../../public/llline.svg") no-repeat;
+  background-size: 50%;
+  background-position: center bottom;
+  rotate: 180deg;
+}
+
+.search:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1240px;
+  height: 300px;
+  left: -1040px;
+  top: -100px;
+  z-index: -1;
+  background: url("../../public/llline.svg") no-repeat;
+  background-size: 50%;
+  background-position: center bottom;
 }

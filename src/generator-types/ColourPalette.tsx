@@ -1,8 +1,6 @@
 "use client";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
-import FireGradient from "@/components/FireGradient";
-import LightRay from "@/components/LightRay";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";

@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./utilitee.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import { Faculty_Glyphic } from "next/font/google";
 
@@ -26,6 +24,7 @@ export const facultyFont = Faculty_Glyphic({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-faculty",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
