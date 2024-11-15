@@ -11,10 +11,10 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
+import { createPortal } from "react-dom";
 
 export default async function Home() {
   const motivation = await getDailyMotivation();
-
   return (
     <section className="overflow-hidden">
       <div className="orange-circle"></div>
@@ -31,7 +31,7 @@ export default async function Home() {
           learn something along the way. I hope you enjoy your stay here.
           Godspeed, pumpkin.
         </p>
-        <div className="items-center flex gap-10 mx-auto mt-20 border border-border p-4 rounded-3xl bg-black/20 ">
+        <div className="items-center flex gap-10 mx-auto mt-20 border border-border p-4 rounded-3xl bg-black/20 shadow-xl">
           <StyledIcon
             icon={faMessageDots}
             classNames={{
@@ -53,14 +53,14 @@ export default async function Home() {
       <section className="section mx-auto max-w-screen-2xl my-20 bg-black/20 rounded-3xl p-10 border border-border shadow-xl">
         <input
           type="search"
-          placeholder="Search for a Utiliteehee"
+          placeholder="Search for a Utilitee"
           className="bg-transparent outline-none text-foreground placeholder:text-foreground/70 text-2xl w-full"
         />
       </section>
       <section className="flex flex-col gap-20 max-w-screen-2xl mx-auto">
         {data.navMain.map((item) => (
           <div key={item.title} className="flex flex-col gap-2">
-            <h2 className="text-6xl mb-4 text-foreground">{item.title}</h2>
+            <h2 className="text-6xl mb-4 text-foreground/50">{item.title}</h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10">
               {item.items.map((item) => (
                 <StylisticWrapper
