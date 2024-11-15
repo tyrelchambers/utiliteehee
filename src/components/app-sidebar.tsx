@@ -20,12 +20,14 @@ import {
 } from "@/components/ui/sidebar";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { data } from "@/index.routes";
+import LightRay from "./LightRay";
 
 // This is sample data.
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
+      <LightRay />
       <SidebarHeader>
         <VersionSwitcher />
         <SearchForm />

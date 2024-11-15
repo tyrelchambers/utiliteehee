@@ -15,7 +15,7 @@ const LoremIpsum = () => {
   }, [counter]);
 
   return (
-    <div className="section max-w-screen-xl mx-auto">
+    <div className="section max-w-screen-xl">
       <h1 className="h1">Lorem Ipsum</h1>
       <p className="text-muted-foreground mb-6">
         Generate some Lorem Ipsum text for your next big project.

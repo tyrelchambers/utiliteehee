@@ -1,8 +1,6 @@
 import StyledIcon from "@/components/StyledIcon";
-import StylisticWrapper from "@/components/StylisticWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import UtiliteeList from "@/components/UtiliteeList";
-import { data } from "@/index.routes";
 import { faMessageDots } from "@fortawesome/pro-solid-svg-icons";
 
 export default async function Home({

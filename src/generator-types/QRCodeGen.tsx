@@ -155,11 +155,11 @@ const QRCodeGen = () => {
   }
 
   return (
-    <div className="section centered">
+    <div className="section">
       <h1 className="h1 mb-6">QR Code</h1>
       <Form {...form}>
         <form
-          className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl mx-auto"
+          className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl"
           onSubmit={form.handleSubmit(makeQRCode, console.log)}
         >
           <FormField

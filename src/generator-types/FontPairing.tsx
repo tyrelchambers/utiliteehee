@@ -32,7 +32,7 @@ const FontPairing = async () => {
   const allFonts = await getFonts();
 
   return (
-    <section>
+    <section className="section">
       <h1 className="h1">Font Pairing</h1>
       <p className="text-muted-foreground mb-6">
         Find the best font pairings in the universe with this handy font pairing
