@@ -49,7 +49,7 @@ body {
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 45 90% 47%;
     --primary-foreground: 0 0% 9%;
     --secondary: 224 20% 9%;
     --secondary-foreground: 0 0% 98%;
@@ -59,7 +59,7 @@ body {
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 224 20% 9%;
+    --border: 224 20% 19%;
     --input: 224 20% 9%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;

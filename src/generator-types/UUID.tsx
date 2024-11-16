@@ -7,7 +7,7 @@ const UUID = () => {
     <div className="section centered">
       <h1 className="h1">UUID Generator</h1>
 
-      <section className="border-border border w-full p-4 rounded-xl max-w-lg mt-6">
+      <section className="border-border border w-full p-4 rounded-xl max-w-lg mt-6 bg-muted/30">
         <Tabs className="w-full" defaultValue="create">
           <TabsList className="w-full">
             <TabsTrigger value="create" className="w-full">

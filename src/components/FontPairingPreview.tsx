@@ -3,13 +3,13 @@ import React from "react";
 
 const FontPairingPreview = ({ text }: { text: string[] }) => {
   return (
-    <section className="rounded-xl overflow-hidden border border-border">
+    <section className="rounded-xl overflow-hidden border border-border bg-muted/30">
       <header className="w-full flex bg-foreground/10 p-4  gap-2">
         <span className="bg-foreground/20 h-3 w-3 rounded-full block"></span>
         <span className="bg-foreground/20 h-3 w-3 rounded-full block"></span>
         <span className="bg-foreground/20 h-3 w-3 rounded-full block"></span>
       </header>
-      <div className="p-10  max-w-2xl mx-auto">
+      <div className="p-10  max-w-2xl mx-auto ">
         <p
           className="text-3xl font-bold preview-heading mb-6"
           contentEditable={true}

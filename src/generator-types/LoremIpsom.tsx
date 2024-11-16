@@ -21,7 +21,7 @@ const LoremIpsum = () => {
         Generate some Lorem Ipsum text for your next big project.
       </p>
       <div className="flex"></div>
-      <div className="rounded-xl border border-border p-3 w-full bg-card">
+      <div className="rounded-xl border border-border p-3 w-full bg-muted/30">
         <ScrollArea className="prose flex flex-col gap-3 h-[300px]  ">
           {text.map((t, i) => (
             <p className="text-foreground" key={i}>

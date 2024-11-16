@@ -206,7 +206,7 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
         <div>
           <h3 className="h3 mb-4">Try out some popular Google fonts</h3>
 
-          <div className=" border border-border rounded-lg p-4 mb-6">
+          <div className=" border border-border rounded-lg p-4 mb-6 bg-muted/30">
             <p className="font-medium mb-4">Heading</p>
             <div className="flex gap-3 flex-wrap">
               {popularFonts.map((f) => (
@@ -226,7 +226,7 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
             </div>
           </div>
 
-          <div className=" border border-border rounded-lg p-4">
+          <div className=" border border-border rounded-lg p-4 bg-muted/30">
             <p className="font-medium mb-4">Paragraph</p>
             <div className="flex gap-3 flex-wrap">
               {popularFonts.map((f) => (

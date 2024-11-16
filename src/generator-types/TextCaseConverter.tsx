@@ -78,7 +78,7 @@ const TextCaseConverter = () => {
       <h1 className="h1 mb-10">Text Case Converter</h1>
       <Form {...form}>
         <form
-          className="w-full flex flex-col gap-6 border border-border p-6 rounded-xl"
+          className="w-full flex flex-col gap-6 border border-border p-6 rounded-xl bg-muted/20"
           onSubmit={form.handleSubmit(convert)}
         >
           <FormField
@@ -118,7 +118,7 @@ const TextCaseConverter = () => {
 
           <div className="flex flex-col">
             <p className="font-medium text-sm mb-3">Output</p>
-            <p className="whitespace-pre-wrap text-sm p-4 bg-muted/50 rounded-xl">
+            <p className="whitespace-pre-wrap text-sm p-4 bg-background rounded-xl">
               {output}
             </p>
           </div>
