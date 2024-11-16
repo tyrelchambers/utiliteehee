@@ -45,7 +45,7 @@ const Nickname = () => {
           >
             <LightRay />
             <div className="flex items-center w-fit gap-4">
-              <p className="font-faculty text-2xl mb-2">{n.name}</p>
+              <p className="font-faculty text-2xl">{n.name}</p>
               <Button
                 variant="outline"
                 size="icon"
