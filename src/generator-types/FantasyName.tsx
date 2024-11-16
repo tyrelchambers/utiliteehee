@@ -32,7 +32,7 @@ const FantasyName = () => {
   return (
     <div className="section max-w-screen-xl ">
       <Badge variant="secondary" className="mb-3 rounded-full">
-        AI wrapper. Refresh might be necessary.
+        AI wrapper. Inconsistancies possible.
       </Badge>
       <h1 className="h1">Fantasy Name Generator</h1>
       <p>

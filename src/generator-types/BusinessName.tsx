@@ -67,7 +67,7 @@ const BusinessName = () => {
   return (
     <section className="section">
       <Badge variant="secondary" className="mb-3 rounded-full">
-        AI wrapper. Refresh might be necessary.
+        AI wrapper. Inconsistancies possible.
       </Badge>
       <h1 className="h1 font-faculty">Business Name Generator</h1>
       <p className="text-muted-foreground mb-10">
@@ -97,7 +97,7 @@ const BusinessName = () => {
               <Button
                 key={s}
                 variant="secondary"
-                className="rounded-full border border-border"
+                className="rounded-full border border-border font-mono"
                 onClick={() => form.setValue("sector", s)}
               >
                 {s}
@@ -124,7 +124,7 @@ const BusinessName = () => {
             >
               <LightRay />
               <div className="flex items-center w-fit gap-4">
-                <p className="font-faculty text-2xl mb-2">{n.name}</p>
+                <p className="font-faculty text-2xl">{n.name}</p>
                 <Button
                   variant="outline"
                   size="icon"

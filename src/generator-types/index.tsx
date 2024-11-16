@@ -1,8 +1,11 @@
 import BusinessName from "./BusinessName";
+import CatchPhrase from "./CatchPhrase";
 import ColourPalette from "./ColourPalette";
+import Excuse from "./Excuse";
 import FantasyName from "./FantasyName";
 import FontPairing from "./FontPairing";
 import LoremIpsom from "./LoremIpsom";
+import Nickname from "./Nickname";
 import QRCodeGen from "./QRCodeGen";
 import SkibidiIpsum from "./SkibidiIpsum";
 import TextCaseConverter from "./TextCaseConverter";
@@ -17,7 +20,10 @@ export type Generator =
   | "qr-code"
   | "text-case-converter"
   | "fantasy-name"
-  | "business-name";
+  | "business-name"
+  | "catchphrase"
+  | "excuse"
+  | "nickname";
 export const getGenerator = (type: Generator) => {
   switch (type) {
     case "colour-palette":
@@ -38,6 +44,12 @@ export const getGenerator = (type: Generator) => {
       return FantasyName;
     case "business-name":
       return BusinessName;
+    case "catchphrase":
+      return CatchPhrase;
+    case "excuse":
+      return Excuse;
+    case "nickname":
+      return Nickname;
     default:
       return () => null;
   }
