@@ -43,7 +43,7 @@ export const getFantasyName = async (universe: string | undefined) => {
     name: "",
     backstory: ""
   }`;
-  let prompt = `Give me a fantasy name ${
+  const prompt = `Give me a fantasy name ${
     universe ? `in the ${universe} universe` : ""
   }. No other follow up responses. Just the names with maybe a fun one sentence backstory accompanying the name. Give me an array of JSON structure: ${jsonStructure}. Fill in the blanks appropriately. and return a JSON array. No special characters like backticks.`;
 
