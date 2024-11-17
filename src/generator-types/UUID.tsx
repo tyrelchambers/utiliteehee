@@ -5,9 +5,9 @@ import Validate from "@/components/uuid/Validate";
 const UUID = () => {
   return (
     <div className="section centered">
-      <h1 className="h1">UUID Generator</h1>
+      <h1 className="h1 mb-4">UUID Generator</h1>
 
-      <section className="border-border border w-full p-4 rounded-xl max-w-lg mt-6 bg-muted/30">
+      <section className="section-body max-w-2xl">
         <Tabs className="w-full" defaultValue="create">
           <TabsList className="w-full">
             <TabsTrigger value="create" className="w-full">

@@ -47,38 +47,36 @@ const ColourPalette = () => {
         <p className="text-muted-foreground">Generate a new colour palette</p>
       </header>
       <section className="flex flex-col">
-        <div className="flex flex-col">
-          <div className="flex items-center">
-            <Input
-              type="color"
-              className="w-10 h-10 p-0 border-0"
-              value={baseColour}
-              onChange={(e) => setBaseColour(e.target.value)}
-            />
+        <div className="flex gap-3 bg-secondary p-4 rounded-xl border border-border items-center">
+          <Input
+            type="color"
+            className="w-10 h-10 p-0 border-0 block"
+            value={baseColour}
+            onChange={(e) => setBaseColour(e.target.value)}
+          />
 
-            <div className=" py-1 rounded-lg flex px-2 gap-4">
-              <ColourWrapper
-                label="HEX"
-                value={baseColour}
-                onClick={() => copy(baseColour)}
-              />
-              <ColourWrapper
-                label="RGB"
-                value={`rgb(${hexToRgb(baseColour).join(", ")})`}
-                onClick={() => copy(`rgb(${hexToRgb(baseColour).join(", ")})`)}
-              />
-              <ColourWrapper
-                label="HSL"
-                value={`hsl(${hexConversion[0]}, ${hexConversion[1]}%, ${hexConversion[2]}%)`}
-                onClick={() =>
-                  copy(
-                    `hsl(${hexConversion[0]}, ${hexConversion[1]}%, ${hexConversion[2]}%)`
-                  )
-                }
-              />
-            </div>
+          <div className=" py-1 rounded-lg flex px-2 gap-4">
+            <ColourWrapper
+              label="HEX"
+              value={baseColour}
+              onClick={() => copy(baseColour)}
+            />
+            <ColourWrapper
+              label="RGB"
+              value={`rgb(${hexToRgb(baseColour).join(", ")})`}
+              onClick={() => copy(`rgb(${hexToRgb(baseColour).join(", ")})`)}
+            />
+            <ColourWrapper
+              label="HSL"
+              value={`hsl(${hexConversion[0]}, ${hexConversion[1]}%, ${hexConversion[2]}%)`}
+              onClick={() =>
+                copy(
+                  `hsl(${hexConversion[0]}, ${hexConversion[1]}%, ${hexConversion[2]}%)`
+                )
+              }
+            />
           </div>
-          <div className="mt-4 w-full max-w-44">
+          <div className="w-44">
             <p className="font-medium text-xs mb-1 text-foreground">
               Number of colours - {colourCount}
             </p>
@@ -100,7 +98,7 @@ const ColourPalette = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Analogous</h2>
             <ExportColour colours={analagous} />
@@ -128,7 +126,7 @@ const ColourPalette = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Monochrome</h2>
             <ExportColour colours={monochrome} />
@@ -155,7 +153,7 @@ const ColourPalette = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Complimentary</h2>
             <ExportColour colours={complimentary} />
@@ -182,7 +180,7 @@ const ColourPalette = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Triadic</h2>
             <ExportColour colours={triadic} />
@@ -209,7 +207,7 @@ const ColourPalette = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
           <header className="flex justify-between mb-4 items-center">
             <h2 className="font-medium font-mono">Tetradic</h2>
             <ExportColour colours={tetradic} />

@@ -20,33 +20,32 @@ const LoremIpsum = () => {
       <p className="text-muted-foreground mb-6">
         Generate some Lorem Ipsum text for your next big project.
       </p>
-      <div className="flex"></div>
-      <div className="rounded-xl border border-border p-3 w-full bg-muted/30">
-        <ScrollArea className="prose flex flex-col gap-3 h-[300px]  ">
+      <section className="section-body">
+        <div className="rounded-xl border border-border p-3 w-full bg-background">
           {text.map((t, i) => (
             <p className="text-foreground" key={i}>
               {t}
             </p>
           ))}
-        </ScrollArea>
-      </div>
-      <footer className="flex justify-between w-full">
-        <Button
-          variant="secondary"
-          className="w-fit mt-4"
-          onClick={() => copy(text.join("\n"))}
-        >
-          <Copy />
-          Copy
-        </Button>
-        <Button
-          className="w-fit mt-4"
-          onClick={() => setCounter((prev) => prev + 1)}
-        >
-          <Shuffle />
-          Regenerate
-        </Button>
-      </footer>
+        </div>
+        <footer className="flex justify-between w-full">
+          <Button
+            variant="secondary"
+            className="w-fit mt-4"
+            onClick={() => copy(text.join("\n"))}
+          >
+            <Copy />
+            Copy
+          </Button>
+          <Button
+            className="w-fit mt-4"
+            onClick={() => setCounter((prev) => prev + 1)}
+          >
+            <Shuffle />
+            Regenerate
+          </Button>
+        </footer>
+      </section>
     </div>
   );
 };

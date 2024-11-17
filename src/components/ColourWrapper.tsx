@@ -10,7 +10,7 @@ const ColourWrapper = ({
   onClick: () => void;
 }) => (
   <button
-    className="flex bg-muted px-3 py-1 rounded-lg items-center gap-3 min-w-48 font-mono"
+    className="flex bg-background px-3 py-1 rounded-lg items-center gap-3 min-w-48 font-mono"
     onClick={onClick}
     type="button"
   >

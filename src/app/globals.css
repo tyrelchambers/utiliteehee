@@ -169,3 +169,7 @@ body {
   background-size: 50%;
   background-position: center bottom;
 }
+
+.section-body {
+  @apply rounded-xl border border-border p-3 w-full bg-secondary;
+}

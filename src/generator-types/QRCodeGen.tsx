@@ -159,7 +159,7 @@ const QRCodeGen = () => {
       <h1 className="h1 mb-6">QR Code</h1>
       <Form {...form}>
         <form
-          className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl bg-muted/20"
+          className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl bg-secondary"
           onSubmit={form.handleSubmit(makeQRCode, console.log)}
         >
           <FormField

@@ -10,6 +10,7 @@ import QRCodeGen from "./QRCodeGen";
 import SkibidiIpsum from "./SkibidiIpsum";
 import TextCaseConverter from "./TextCaseConverter";
 import UUID from "./UUID";
+import WritingPrompt from "./WritingPrompt";
 
 export type Generator =
   | "colour-palette"
@@ -23,7 +24,8 @@ export type Generator =
   | "business-name"
   | "catchphrase"
   | "excuse"
-  | "nickname";
+  | "nickname"
+  | "writing-prompt";
 export const getGenerator = (type: Generator) => {
   switch (type) {
     case "colour-palette":
@@ -50,6 +52,8 @@ export const getGenerator = (type: Generator) => {
       return Excuse;
     case "nickname":
       return Nickname;
+    case "writing-prompt":
+      return WritingPrompt;
     default:
       return () => null;
   }

@@ -112,7 +112,7 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
         }
       `}</style>
       <div className="flex flex-col gap-8">
-        <section className="border border-border p-4 rounded-xl bg-muted/30 h-fit">
+        <section className="border border-border p-4 rounded-xl bg-secondary h-fit">
           <div className="flex gap-4">
             <div className="flex flex-col w-full gap-6">
               <div className="flex flex-col gap-2 ">
@@ -206,13 +206,13 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
         <div>
           <h3 className="h3 mb-4">Try out some popular Google fonts</h3>
 
-          <div className=" border border-border rounded-lg p-4 mb-6 bg-muted/30">
+          <div className=" border border-border rounded-lg p-4 mb-6 bg-secondary">
             <p className="font-medium mb-4">Heading</p>
             <div className="flex gap-3 flex-wrap">
               {popularFonts.map((f) => (
                 <Button
                   key={f.family}
-                  variant="secondary"
+                  variant="outline"
                   onClick={() =>
                     setHeadingFont({
                       ...headingFont,
@@ -226,13 +226,13 @@ const FontPairingBody = ({ fonts }: { fonts: Font["items"] }) => {
             </div>
           </div>
 
-          <div className=" border border-border rounded-lg p-4 bg-muted/30">
+          <div className=" border border-border rounded-lg p-4 bg-secondary">
             <p className="font-medium mb-4">Paragraph</p>
             <div className="flex gap-3 flex-wrap">
               {popularFonts.map((f) => (
                 <Button
                   key={f.family}
-                  variant="secondary"
+                  variant="outline"
                   onClick={() =>
                     setParagraphFont({
                       ...paragraphFont,
