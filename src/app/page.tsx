@@ -17,7 +17,7 @@ export default async function Home({
       </header>
       <section className="max-w-screen-xl mx-auto w-full min-h-[700px] flex flex-col justify-center items-center">
         <h1 className="h1 text-6xl text-center mb-10">
-          Here lies many a great Utilitees. Enjoy.
+          Free Range. All Natural. Vegan. Non-GMO Utilitees.
         </h1>
         <p className="text-foreground/70 text-2xl text-center leading-10 max-w-4xl font-light block">
           This project is a project of passion. Built on the mentality of just

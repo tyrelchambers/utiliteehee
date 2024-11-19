@@ -1,5 +1,7 @@
 "use server";
 
+import { convertCommaStringToArray } from "@/utils/convertCommaStringToArray";
+
 const WEBUI_CHATS_URL = `${process.env.WEBUI_URL}/api/chat/completions`;
 
 const fetchResponse = async (
@@ -169,4 +171,57 @@ export const generateNickname = async () => {
   }
 
   return response;
+};
+
+interface WritingPromptProps {
+  interests: string | undefined;
+  style: string | undefined;
+  tone: string | undefined;
+  era: string | undefined;
+  themes: string | undefined;
+  writingStyle: string | undefined;
+  constraints: string | undefined;
+  additionalInfo: string | undefined;
+}
+
+export const generateWritingPrompt = async ({
+  interests,
+  style,
+  tone,
+  era,
+  themes,
+  writingStyle,
+  constraints,
+  additionalInfo,
+}: WritingPromptProps) => {
+  const prompt = `
+  Give me a writing prompt. No other follow up responses. Just the phrase. this should be suitable for someone wanting to write a story. 
+
+  ---- CONTEXT
+  Follow these guidelines if they are present:
+
+  Interests: ${convertCommaStringToArray(interests)}
+  Style: ${convertCommaStringToArray(style)}
+  Tone: ${convertCommaStringToArray(tone)}
+  Era: ${convertCommaStringToArray(era)}
+  Themes: ${convertCommaStringToArray(themes)}
+  Writing Style: ${convertCommaStringToArray(writingStyle)}
+  Constraints: ${convertCommaStringToArray(constraints)}
+  Additional Info: ${additionalInfo}
+
+  `;
+
+  const structure = {
+    model: process.env.OLLAMA_MODEL,
+    messages: [
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+  };
+
+  const resp = await fetchResponse(structure);
+
+  return resp;
 };

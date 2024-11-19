@@ -13,7 +13,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex sticky top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4">
+        <header className="flex sticky top-0 bg-background h-16 shrink-0 items-center gap-2 border-b z-50 px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <CustomBreadcrumb />

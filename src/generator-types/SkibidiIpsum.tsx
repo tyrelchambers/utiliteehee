@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { copy } from "@/utils/copy";
 import { generateSkibidiIpsum } from "@/utils/skibidiIpsum";
 import { Copy, Shuffle } from "lucide-react";
