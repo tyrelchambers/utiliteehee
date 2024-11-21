@@ -139,7 +139,6 @@ export const addPlaylist = async (id: string) => {
   })
     .then((res) => res.json())
     .catch((error) => Error(error));
-  console.log(resp);
 
   if (resp.error) {
     throw new Error("Playlist not found");

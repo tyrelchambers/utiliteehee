@@ -5,10 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "seed-mix-image.spotifycdn.com",
-      },
-      {
-        hostname: "image-cdn-ak.spotifycdn.com",
+        hostname: "**",
       },
     ],
   },

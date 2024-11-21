@@ -2,6 +2,7 @@
 import { getPlaylists, getRecommendations } from "@/actions/spotify";
 import SharePlaylistModal from "@/components/SharePlaylistModal";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -19,6 +20,7 @@ import React, { useEffect } from "react";
 
 const MoodPlaylist = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [loadingPlaylists, setLoadingPlaylists] = React.useState<boolean>(true);
   const [mood, setMood] = React.useState<string>("");
   const [tracks, setTracks] = React.useState<any[]>([]);
   const [playlists, setPlaylists] = React.useState<SpotifyPlaylist[]>([]);
@@ -27,6 +29,7 @@ const MoodPlaylist = () => {
     (async () => {
       const playlists = await getPlaylists();
       setPlaylists(playlists);
+      setLoadingPlaylists(false);
     })();
   }, []);
 
@@ -49,7 +52,6 @@ const MoodPlaylist = () => {
   return (
     <section className="section">
       <h1 className="h1">Mood Playlist Generator</h1>
-      {console.log(playlists)}
       <section className="grid grid-cols-[900px_1fr] gap-10 mt-10">
         <div className="flex flex-col">
           <div className="bg-secondary border border-border p-4 rounded-xl ">
@@ -98,48 +100,71 @@ const MoodPlaylist = () => {
           )}
         </div>
 
-        <div className="flex flex-col bg-secondary border border-border p-4 rounded-xl">
+        <div className="flex flex-col bg-secondary border border-border p-4 rounded-xl  h-fit">
           <header className="flex items-center justify-between mb-10">
-            <h2 className="h2 mb-0">Shared Playlists</h2>
+            <div className="flex flex-col">
+              <h2 className="h2 mb-0">Shared Playlists</h2>
+              <p className="text-muted-foreground">
+                These playlists have been added by the community for your
+                enjoyment!
+              </p>
+            </div>
             <SharePlaylistModal setPlaylists={addPlaylist} />
           </header>
 
-          <div className="grid grid-cols-6 gap-2">
-            {playlists.length > 0 &&
-              playlists.map((p, i) => (
-                <Link
-                  href={p.url}
-                  target="_blank"
-                  key={i}
-                  className="relative rounded-md overflow-hidden playlist-item"
-                >
-                  <div className="absolute bottom-0 left-0 z-10 bg-gradient-to-t from-muted to-muted/10 h-full flex flex-col justify-end p-2">
-                    <p className="font-bold">{p.name}</p>
-                    <p className="text-xs text-muted-foreground mb-2">
-                      {p.description}
-                    </p>
-                    <div className="flex text-xxs">
-                      <FontAwesomeIcon icon={faUser} />
-                      <p className="ml-2  font-bold text-muted-foreground">
-                        {p.userDisplayName}
+          <ScrollArea className="h-[500px]">
+            <div className="grid grid-cols-6 gap-2">
+              {" "}
+              {!loadingPlaylists &&
+                playlists.length > 0 &&
+                playlists.map((p, i) => (
+                  <Link
+                    href={p.url}
+                    target="_blank"
+                    key={i}
+                    className="relative rounded-md overflow-hidden playlist-item"
+                  >
+                    <div className="absolute bottom-0 left-0 z-10 bg-gradient-to-t from-muted to-muted/10 h-full flex flex-col justify-end p-2">
+                      <p className="font-bold">{p.name}</p>
+                      <p className="text-xs text-muted-foreground mb-2">
+                        {p.description}
                       </p>
+                      <div className="flex text-xxs">
+                        <FontAwesomeIcon icon={faUser} />
+                        <p className="ml-2  font-bold text-muted-foreground">
+                          {p.userDisplayName}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="relative aspect-square">
-                    <Image
-                      src={p.image}
-                      alt={p.name}
-                      fill
-                      className="playlist-thumb transition-all"
-                    />
-                  </div>
-                </Link>
-              ))}
-          </div>
+                    <div className="relative aspect-square">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        className="playlist-thumb transition-all"
+                        sizes="200px"
+                      />
+                    </div>
+                  </Link>
+                ))}
+              {loadingPlaylists && <Loaders />}
+            </div>
+          </ScrollArea>
         </div>
       </section>
     </section>
   );
 };
+
+const Loaders = () => (
+  <>
+    <Skeleton className="aspect-square !bg-background" />
+    <Skeleton className="aspect-square  !bg-background" />
+    <Skeleton className="aspect-square  !bg-background" />
+    <Skeleton className="aspect-square  !bg-background" />
+    <Skeleton className="aspect-square  !bg-background" />
+    <Skeleton className="aspect-square  !bg-background" />
+  </>
+);
 
 export default MoodPlaylist;
