@@ -102,6 +102,8 @@ export const generateBusinessName = async (
   const response = await fetchResponse(structure);
 
   try {
+    console.log("Response: ", response);
+
     JSON.parse(response);
   } catch (error) {
     console.log(error);
