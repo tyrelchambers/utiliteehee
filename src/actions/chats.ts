@@ -87,7 +87,7 @@ export const generateBusinessName = async (
     name: ""
   }`;
 
-  const prompt = `Give me a list of business name ideas for ${query} in the ${sector} sector. No other follow up responses. Just the names. Give me an array of JSON structure: ${jsonStructure}. Fill in the blanks appropriately. and return a JSON array. No special characters like backticks.`;
+  const prompt = `Give me a list of business name ideas for ${query} in the ${sector} sector. No other follow up responses. Just the names. Give me an array of JSON structure: ${jsonStructure}. Fill in the blanks appropriately. and return a JSON array. No special characters like backticks. It should be able to be parsed by JSON. Adhere to my jsonStructure. Only return JSON.`;
 
   const structure = {
     model: process.env.OLLAMA_MODEL,
