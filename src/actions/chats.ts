@@ -225,3 +225,24 @@ export const generateWritingPrompt = async ({
 
   return resp;
 };
+
+export const getRomanEmpireFacts = async () => {
+  const prompt = `Give me a list of facts about the Roman Empire. No follow ups and no fluff. You won't be interacted with.`;
+  const structure = {
+    model: process.env.OLLAMA_MODEL,
+    messages: [
+      {
+        role: "system",
+        content: "You are an expert historian on the roman empire.",
+      },
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+  };
+
+  const resp = await fetchResponse(structure);
+
+  return resp;
+};

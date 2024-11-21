@@ -8,6 +8,7 @@ import LoremIpsom from "./LoremIpsom";
 import MoodPlaylist from "./MoodPlaylist";
 import Nickname from "./Nickname";
 import QRCodeGen from "./QRCodeGen";
+import RandomRomanFact from "./RandomRomanFact";
 import SkibidiIpsum from "./SkibidiIpsum";
 import TextCaseConverter from "./TextCaseConverter";
 import UUID from "./UUID";
@@ -27,7 +28,8 @@ export type Generator =
   | "excuse"
   | "nickname"
   | "writing-prompt"
-  | "mood-playlist";
+  | "mood-playlist"
+  | "roman-empire-fact";
 export const getGenerator = (type: Generator) => {
   switch (type) {
     case "colour-palette":
@@ -58,6 +60,8 @@ export const getGenerator = (type: Generator) => {
       return WritingPrompt;
     case "mood-playlist":
       return MoodPlaylist;
+    case "roman-empire-fact":
+      return RandomRomanFact;
     default:
       return () => null;
   }
