@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json package-lock.json* .npmrc* ./
+COPY package.json package-lock.json* .npmrc* prisma ./
 RUN   --mount=type=secret,id=FONTAWESOME_PACKAGE_TOKEN,env=FONTAWESOME_PACKAGE_TOKEN \
       --mount=type=secret,id=DB_URL,env=DB_URL \ 
       npm ci --force
