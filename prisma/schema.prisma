@@ -1,0 +1,18 @@
+datasource db {
+  url      = env("DB_URL")
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SpotifyPlaylist {
+  id              String @id @default(uuid())
+  playlistId      String @unique
+  name            String
+  description     String
+  url             String
+  userDisplayName String
+  image           String
+}

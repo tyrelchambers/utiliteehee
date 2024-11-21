@@ -1,5 +1,7 @@
 "use server";
 import querystring from "node:querystring";
+import { getAllPlaylists, savePlaylist } from "../../prisma/actions";
+import { Prisma, SpotifyPlaylist } from "@prisma/client";
 var client_id = process.env.SPOTIFY_ID;
 var client_secret = process.env.SPOTIFY_SECRET;
 const spotify_url = "https://api.spotify.com/v1/";
@@ -21,13 +23,9 @@ export const getSpotifyToken = async (): Promise<Token> => {
     },
     body: `grant_type=client_credentials`,
     cache: "default",
-    next: {
-      revalidate: 3500,
-    },
   })
     .then((res) => res.json())
     .catch((error) => Error(error));
-  console.log(resp);
 
   return resp;
 };
@@ -129,7 +127,8 @@ interface Playlist {
   };
 }
 
-export const addPlaylist = async (id: string): Promise<Playlist> => {
+export const addPlaylist = async (id: string) => {
+  if (!id) return;
   const token = await getSpotifyToken();
 
   const resp = await fetch(spotify_url + `playlists/${id}`, {
@@ -140,6 +139,29 @@ export const addPlaylist = async (id: string): Promise<Playlist> => {
   })
     .then((res) => res.json())
     .catch((error) => Error(error));
+  console.log(resp);
 
-  return resp;
+  if (resp.error) {
+    throw new Error("Playlist not found");
+  }
+
+  const playlist: Omit<SpotifyPlaylist, "id"> = {
+    name: resp.name,
+    description: resp.description,
+    url: resp.external_urls.spotify,
+    image: resp.images[0].url,
+    userDisplayName: resp.owner.display_name,
+    playlistId: id,
+  };
+  try {
+    const savedPlaylist = await savePlaylist(playlist);
+    return savedPlaylist;
+  } catch (error) {
+    throw Error("Failed to save playlist");
+  }
+};
+
+export const getPlaylists = async () => {
+  const playlists = await getAllPlaylists();
+  return playlists;
 };

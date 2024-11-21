@@ -173,3 +173,7 @@ body {
 .section-body {
   @apply rounded-xl border border-border p-3 w-full bg-secondary;
 }
+
+.playlist-item:hover .playlist-thumb {
+  transform: scale(1.1);
+}

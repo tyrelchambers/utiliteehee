@@ -1,13 +1,7 @@
 "use client";
-import { getRecommendations } from "@/actions/spotify";
+import { getPlaylists, getRecommendations } from "@/actions/spotify";
 import SharePlaylistModal from "@/components/SharePlaylistModal";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import {
   Select,
   SelectContent,
@@ -16,15 +10,26 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { faSpinner } from "@fortawesome/pro-solid-svg-icons";
+import { faSpinner, faUser } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DialogTrigger } from "@radix-ui/react-dialog";
-import React from "react";
+import { SpotifyPlaylist } from "@prisma/client";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect } from "react";
 
 const MoodPlaylist = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [mood, setMood] = React.useState<string>("");
   const [tracks, setTracks] = React.useState<any[]>([]);
+  const [playlists, setPlaylists] = React.useState<SpotifyPlaylist[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const playlists = await getPlaylists();
+      setPlaylists(playlists);
+    })();
+  }, []);
+
   const getRecs = async () => {
     setLoading(true);
     try {
@@ -37,10 +42,14 @@ const MoodPlaylist = () => {
     setLoading(false);
   };
 
+  const addPlaylist = (playlist: SpotifyPlaylist) => {
+    setPlaylists((prev) => [...prev, playlist]);
+  };
+
   return (
     <section className="section">
       <h1 className="h1">Mood Playlist Generator</h1>
-
+      {console.log(playlists)}
       <section className="grid grid-cols-[900px_1fr] gap-10 mt-10">
         <div className="flex flex-col">
           <div className="bg-secondary border border-border p-4 rounded-xl ">
@@ -90,10 +99,43 @@ const MoodPlaylist = () => {
         </div>
 
         <div className="flex flex-col bg-secondary border border-border p-4 rounded-xl">
-          <header className="flex items-center justify-between">
+          <header className="flex items-center justify-between mb-10">
             <h2 className="h2 mb-0">Shared Playlists</h2>
-            <SharePlaylistModal />
+            <SharePlaylistModal setPlaylists={addPlaylist} />
           </header>
+
+          <div className="grid grid-cols-6 gap-2">
+            {playlists.length > 0 &&
+              playlists.map((p, i) => (
+                <Link
+                  href={p.url}
+                  target="_blank"
+                  key={i}
+                  className="relative rounded-md overflow-hidden playlist-item"
+                >
+                  <div className="absolute bottom-0 left-0 z-10 bg-gradient-to-t from-muted to-muted/10 h-full flex flex-col justify-end p-2">
+                    <p className="font-bold">{p.name}</p>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      {p.description}
+                    </p>
+                    <div className="flex text-xxs">
+                      <FontAwesomeIcon icon={faUser} />
+                      <p className="ml-2  font-bold text-muted-foreground">
+                        {p.userDisplayName}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative aspect-square">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      className="playlist-thumb transition-all"
+                    />
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
       </section>
     </section>
