@@ -38,6 +38,8 @@ jobs:
             FONT_HOST_URL=${{ secrets.FONT_HOST_URL }}
             FONTAWESOME_PACKAGE_TOKEN=${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
             DB_URL=${{ secrets.DB_URL }}
+            SPOTIFY_ID=${{ secrets.SPOTIFY_ID }}
+            SPOTIFY_SECRET=${{ secrets.SPOTIFY_SECRET }}
 
   deploy:
     needs: [build-web]

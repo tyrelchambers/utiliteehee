@@ -25,10 +25,12 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN --mount=type=secret,id=WEBUI_TOKEN,env=WEBUI_TOKEN \
-  --mount=type=secret,id=WEBUI_URL,env=WEBUI_URL \
-  --mount=type=secret,id=OLLAMA_MODEL,env=OLLAMA_MODEL \ 
-  --mount=type=secret,id=FONT_HOST_URL,env=FONT_HOST_URL \
-  --mount=type=secret,id=DB_URL,env=DB_URL \
+    --mount=type=secret,id=WEBUI_URL,env=WEBUI_URL \
+    --mount=type=secret,id=OLLAMA_MODEL,env=OLLAMA_MODEL \ 
+    --mount=type=secret,id=FONT_HOST_URL,env=FONT_HOST_URL \
+    --mount=type=secret,id=DB_URL,env=DB_URL \
+    --mount=type=secret,id=SPOTIFY_ID,env=SPOTIFY_ID \
+    --mount=type=secret,id=SPOTIFY_SECRET,env=SPOTIFY_SECRET \
     npm run build
 
 # Production image, copy all the files and run next
