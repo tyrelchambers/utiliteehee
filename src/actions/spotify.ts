@@ -85,7 +85,6 @@ export const getRecommendations = async (mood: string) => {
     })
       .then((res) => res.json())
       .catch((error) => Error(error));
-    console.log(resp);
 
     const tracks = [];
 

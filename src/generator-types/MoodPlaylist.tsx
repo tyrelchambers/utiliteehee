@@ -52,6 +52,11 @@ const MoodPlaylist = () => {
   return (
     <section className="section">
       <h1 className="h1">Mood Playlist Generator</h1>
+      <p className="text-muted-foreground max-w-6xl">
+        This playlist generator uses Spotify to curate a playlist based on your
+        mood. Also checkout the playlists added by the community. If you have a
+        sweet playlist in mind, add it in the section below.
+      </p>
       <section className="grid grid-cols-[900px_1fr] gap-10 mt-10">
         <div className="flex flex-col">
           <div className="bg-secondary border border-border p-4 rounded-xl ">
