@@ -5,6 +5,7 @@ import Excuse from "./Excuse";
 import FantasyName from "./FantasyName";
 import FontPairing from "./FontPairing";
 import LoremIpsom from "./LoremIpsom";
+import MoodPlaylist from "./MoodPlaylist";
 import Nickname from "./Nickname";
 import QRCodeGen from "./QRCodeGen";
 import SkibidiIpsum from "./SkibidiIpsum";
@@ -25,7 +26,8 @@ export type Generator =
   | "catchphrase"
   | "excuse"
   | "nickname"
-  | "writing-prompt";
+  | "writing-prompt"
+  | "mood-playlist";
 export const getGenerator = (type: Generator) => {
   switch (type) {
     case "colour-palette":
@@ -54,6 +56,8 @@ export const getGenerator = (type: Generator) => {
       return Nickname;
     case "writing-prompt":
       return WritingPrompt;
+    case "mood-playlist":
+      return MoodPlaylist;
     default:
       return () => null;
   }

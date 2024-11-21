@@ -60,7 +60,7 @@ const WritingPrompt = () => {
   };
 
   return (
-    <section className="section grid grid-cols-[760px_1fr] gap-10">
+    <section className="section grid grid-cols-[760px_760px] gap-10">
       <div className="flex flex-col">
         <Badge variant="secondary" className="mb-3 rounded-full">
           AI wrapper. Yes, another one.
