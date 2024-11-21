@@ -4,7 +4,6 @@ import React from "react";
 
 const RandomRomanFact = async () => {
   const fact = await getRomanEmpireFacts();
-  console.log(fact);
 
   return (
     <section className="section">
