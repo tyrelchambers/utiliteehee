@@ -69,8 +69,6 @@ const moodConfigs: Config = {
     seed_artists:
       "6XyY86QOPPrYVGvF9ch6wz,2xiIXseIJcq3nG7C8fHeBj,2CmaKO2zEGJ1NWpS1yfVGz",
   },
-  angry: {},
-  ["give-me-metal"]: {},
 };
 
 export const getRecommendations = async (mood: string) => {
@@ -116,5 +114,32 @@ export const getTrackEmbed = async (url: string) => {
   })
     .then((res) => res.json())
     .catch((error) => Error(error));
+  return resp;
+};
+
+interface Playlist {
+  description: string;
+  external_urls: {
+    spotify: string;
+  };
+  images: { height: string; url: string; width: string }[];
+  name: string;
+  owner: {
+    display_name: string;
+  };
+}
+
+export const addPlaylist = async (id: string): Promise<Playlist> => {
+  const token = await getSpotifyToken();
+
+  const resp = await fetch(spotify_url + `playlists/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token.access_token}`,
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => Error(error));
+
   return resp;
 };
