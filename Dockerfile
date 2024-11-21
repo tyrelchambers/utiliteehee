@@ -32,6 +32,7 @@ RUN --mount=type=secret,id=WEBUI_TOKEN,env=WEBUI_TOKEN \
     --mount=type=secret,id=SPOTIFY_ID,env=SPOTIFY_ID \
     --mount=type=secret,id=SPOTIFY_SECRET,env=SPOTIFY_SECRET \
     npm run build
+  RUN npx prisma generate
 
 # Production image, copy all the files and run next
 FROM base AS runner
