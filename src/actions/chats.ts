@@ -150,7 +150,7 @@ export const generateNickname = async () => {
     name: ""
   }`;
 
-  const prompt = `Give me a list of nicknames. Something that would be a little over and above, funny and outlandish. No other follow up responses. Just the phrase. Give me an array of JSON structure: ${jsonStructure}. Fill in the blanks appropriately. and return a JSON array. No special characters like backticks.`;
+  const prompt = `Give me a list of nicknames. Something that would be a little over and above, funny and outlandish. No other follow up responses. Just the phrase. Give me an array of JSON structure: ${jsonStructure}. Fill in the blanks appropriately. and return a JSON array. No special characters like backticks. Adhere to my jsonStructure. Only return JSON.`;
   const structure = {
     model: process.env.OLLAMA_MODEL,
     messages: [
