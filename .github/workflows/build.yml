@@ -37,6 +37,7 @@ jobs:
             WEBUI_TOKEN=${{ secrets.WEBUI_TOKEN }}
             FONT_HOST_URL=${{ secrets.FONT_HOST_URL }}
             FONTAWESOME_PACKAGE_TOKEN=${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
+            DB_URL=${{ secrets.DB_URL }}
 
   deploy:
     needs: [build-web]
