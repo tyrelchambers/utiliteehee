@@ -57,7 +57,7 @@ const MoodPlaylist = () => {
         mood. Also checkout the playlists added by the community. If you have a
         sweet playlist in mind, add it in the section below.
       </p>
-      <section className="grid grid-cols-[900px_1fr] gap-10 mt-10">
+      <section className="grid grid-cols-[minmax(500px,900px)_minmax(500px,1fr)] gap-10 mt-10">
         <div className="flex flex-col">
           <div className="bg-secondary border border-border p-4 rounded-xl ">
             <p className="font-medium">
@@ -118,8 +118,7 @@ const MoodPlaylist = () => {
           </header>
 
           <ScrollArea className="h-[500px]">
-            <div className="grid grid-cols-6 gap-2">
-              {" "}
+            <div className="playlist-grid gap-2">
               {!loadingPlaylists &&
                 playlists.length > 0 &&
                 playlists.map((p, i) => (
@@ -129,7 +128,7 @@ const MoodPlaylist = () => {
                     key={i}
                     className="relative rounded-md overflow-hidden playlist-item"
                   >
-                    <div className="absolute bottom-0 left-0 z-10 bg-gradient-to-t from-muted to-muted/10 h-full flex flex-col justify-end p-2">
+                    <div className="absolute bottom-0 left-0 w-full z-10 bg-gradient-to-t from-muted to-muted/10 h-full flex flex-col justify-end p-2">
                       <p className="font-bold">{p.name}</p>
                       <p className="text-xs text-muted-foreground mb-2">
                         {p.description}
