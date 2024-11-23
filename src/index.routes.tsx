@@ -19,6 +19,7 @@ import {
   faInputNumeric,
   fa7,
   faKey,
+  faBinary,
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 
@@ -226,9 +227,10 @@ export const data: Data = {
       title: "Converters",
       items: [
         {
-          title: "Bits in an Integer",
-          url: "/generators/bits-in-an-integer",
+          title: "Bit visualizer",
+          url: "/generators/bit-visualizer",
           isActive: false,
+          icon: faBinary,
         },
       ],
     },

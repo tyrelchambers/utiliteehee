@@ -1,3 +1,4 @@
+import BitVisualizer from "./BitVisualizer";
 import BusinessName from "./BusinessName";
 import CatchPhrase from "./CatchPhrase";
 import ColourPalette from "./ColourPalette";
@@ -29,7 +30,8 @@ export type Generator =
   | "nickname"
   | "writing-prompt"
   | "mood-playlist"
-  | "roman-empire-fact";
+  | "roman-empire-fact"
+  | "bit-visualizer";
 export const getGenerator = (type: Generator) => {
   switch (type) {
     case "colour-palette":
@@ -62,6 +64,8 @@ export const getGenerator = (type: Generator) => {
       return MoodPlaylist;
     case "roman-empire-fact":
       return RandomRomanFact;
+    case "bit-visualizer":
+      return BitVisualizer;
     default:
       return () => null;
   }
