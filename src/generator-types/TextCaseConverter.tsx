@@ -1,4 +1,5 @@
 "use client";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -75,7 +76,9 @@ const TextCaseConverter = () => {
 
   return (
     <section className="section max-w-screen-lg">
-      <h1 className="h1 mb-10">Text Case Converter</h1>
+      <Heading module="text-case-converter">
+        <h1 className="h1 mb-10">Text Case Converter</h1>
+      </Heading>
       <Form {...form}>
         <form
           className="w-full flex flex-col gap-6 border border-border p-6 rounded-xl bg-secondary"

@@ -1,4 +1,5 @@
 "use client";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { copy } from "@/utils/copy";
 import { generateSkibidiIpsum } from "@/utils/skibidiIpsum";
@@ -15,7 +16,9 @@ const SkibidiIpsum = () => {
 
   return (
     <div className="section max-w-screen-xl">
-      <h1 className="h1 mb-2">Skibidi Ipsum</h1>
+      <Heading module="skibidi-ipsum">
+        <h1 className="h1 mb-2">Skibidi Ipsum</h1>
+      </Heading>
       <p className="text-muted-foreground mb-6">
         The dankest new ipsum generator inspired by TikTok culture. Skibidi your
         way to brand new dummy text straight from Ohio.

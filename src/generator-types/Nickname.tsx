@@ -1,5 +1,6 @@
 "use client";
 import { generateNickname } from "@/actions/chats";
+import Heading from "@/components/Heading";
 import LightRay from "@/components/LightRay";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,7 +26,9 @@ const Nickname = () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <h1 className="h1">Nickname Generator</h1>
+      <Heading module="nickname">
+        <h1 className="h1">Nickname Generator</h1>
+      </Heading>
       <p className="text-muted-foreground mb-6">
         Get a super awesome nickname.
       </p>

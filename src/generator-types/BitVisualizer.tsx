@@ -1,4 +1,5 @@
 "use client";
+import Heading from "@/components/Heading";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useMemo, useState } from "react";
@@ -48,7 +49,9 @@ const BitVisualizer = () => {
 
   return (
     <section className="section">
-      <h1 className="h1">Bit Visualizer</h1>
+      <Heading module="bit-visualizer">
+        <h1 className="h1">Bit Visualizer</h1>
+      </Heading>
       <p className="text-muted-foreground">
         This type of tool helped me (the creator of Utiliteehee) visualize
         numbers as bits.

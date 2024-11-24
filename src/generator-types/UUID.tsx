@@ -1,3 +1,4 @@
+import Heading from "@/components/Heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Create from "@/components/uuid/Create";
 import Validate from "@/components/uuid/Validate";
@@ -5,7 +6,9 @@ import Validate from "@/components/uuid/Validate";
 const UUID = () => {
   return (
     <div className="section centered">
-      <h1 className="h1 mb-4">UUID Generator</h1>
+      <Heading module="uuid">
+        <h1 className="h1 mb-4">UUID Generator</h1>
+      </Heading>
 
       <section className="section-body max-w-2xl">
         <Tabs className="w-full" defaultValue="create">

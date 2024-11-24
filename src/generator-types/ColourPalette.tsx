@@ -1,6 +1,7 @@
 "use client";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
@@ -43,7 +44,9 @@ const ColourPalette = () => {
   return (
     <div className="section">
       <header className="mb-10">
-        <h1 className="h1 mb-2">Colour Palette</h1>
+        <Heading module="colour-palette">
+          <h1 className="h1 mb-2">Colour Palette</h1>
+        </Heading>
         <p className="text-muted-foreground">Generate a new colour palette</p>
       </header>
       <section className="flex flex-col">

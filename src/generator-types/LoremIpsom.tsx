@@ -1,4 +1,5 @@
 "use client";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { copy } from "@/utils/copy";
 import { generateLoremIpsum } from "@/utils/loremIpsum";
@@ -15,7 +16,9 @@ const LoremIpsum = () => {
 
   return (
     <div className="section max-w-screen-xl">
-      <h1 className="h1">Lorem Ipsum</h1>
+      <Heading module="lorem-ipsum">
+        <h1 className="h1">Lorem Ipsum</h1>
+      </Heading>
       <p className="text-muted-foreground mb-6">
         Generate some Lorem Ipsum text for your next big project.
       </p>

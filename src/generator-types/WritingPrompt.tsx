@@ -1,5 +1,6 @@
 "use client";
 import { generateWritingPrompt } from "@/actions/chats";
+import Heading from "@/components/Heading";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -65,7 +66,9 @@ const WritingPrompt = () => {
         <Badge variant="secondary" className="mb-3 rounded-full">
           AI wrapper. Yes, another one.
         </Badge>
-        <h1 className="h1">Writing Prompt</h1>
+        <Heading module="writing-prompt">
+          <h1 className="h1">Writing Prompt</h1>
+        </Heading>
         <p className="text-muted-foreground mb-6">
           Use this tool to get a writing prompt. Hopefully it helps.
         </p>

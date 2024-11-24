@@ -1,4 +1,5 @@
 import FontPairingBody from "@/components/FontPairingBody";
+import Heading from "@/components/Heading";
 import React from "react";
 
 export interface Font {
@@ -33,7 +34,9 @@ const FontPairing = async () => {
 
   return (
     <section className="section">
-      <h1 className="h1">Font Pairing</h1>
+      <Heading module="font-pairing">
+        <h1 className="h1">Font Pairing</h1>
+      </Heading>
       <p className="text-muted-foreground mb-6">
         Find the best font pairings in the universe with this handy font pairing
         tool.

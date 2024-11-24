@@ -1,6 +1,7 @@
 "use client";
 import { getFantasyName } from "@/actions/chats";
 import FantasyNameItem from "@/components/FantasyNameItem";
+import Heading from "@/components/Heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,7 +35,9 @@ const FantasyName = () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <h1 className="h1">Fantasy Name Generator</h1>
+      <Heading module="fantasy-name">
+        <h1 className="h1">Fantasy Name Generator</h1>
+      </Heading>
       <p>
         Use this tool to get a super awesome name for your next D&amp;D
         campaign.

@@ -1,5 +1,6 @@
 "use client";
 import { generateBusinessName } from "@/actions/chats";
+import Heading from "@/components/Heading";
 import LightRay from "@/components/LightRay";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -69,7 +70,9 @@ const BusinessName = () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <h1 className="h1 font-faculty">Business Name Generator</h1>
+      <Heading module="business-name">
+        <h1 className="h1 font-faculty">Business Name Generator</h1>
+      </Heading>
       <p className="text-muted-foreground mb-10">
         Maybe we can jumpstart the creative process. But we all know naming
         things is the most difficult thng in life.

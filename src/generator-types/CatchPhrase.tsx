@@ -1,4 +1,5 @@
 import { generateCatchPhrase } from "@/actions/chats";
+import Heading from "@/components/Heading";
 import { Badge } from "@/components/ui/badge";
 import React from "react";
 
@@ -10,7 +11,9 @@ const CatchPhrase = async () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <h1 className="h1">Catchphrase Generator</h1>
+      <Heading module="catchphrase">
+        <h1 className="h1">Catchphrase Generator</h1>
+      </Heading>
       <p className="text-muted-foreground mb-6">
         Get a super awesome catchphrase.
       </p>

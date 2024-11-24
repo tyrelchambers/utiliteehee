@@ -23,10 +23,14 @@ import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { data } from "@/index.routes";
 import LightRay from "./LightRay";
 import { usePathname } from "next/navigation";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "@/lib/dexie";
+import Link from "next/link";
 
 // This is sample data.
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const favourites = useLiveQuery(() => db.favourites.toArray());
   const pathname = usePathname();
   const isActive = (url: string) => {
     return pathname === url;
@@ -40,12 +44,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SearchForm />
       </SidebarHeader>
       <SidebarContent className="gap-0">
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-sm text-sidebar-foreground">
+            Favourites
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {favourites?.map((favourite) => (
+                <SidebarMenuItem key={favourite.id}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(favourite.name)}
+                  >
+                    <Link href={favourite.name}>{favourite.name}</Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         {/* We create a collapsible SidebarGroup for each parent. */}
         {data.navMain.map((item) => (
           <Collapsible
             key={item.title}
             title={item.title}
-            defaultOpen
             className="group/collapsible"
           >
             <SidebarGroup>
