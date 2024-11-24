@@ -1,10 +1,13 @@
 "use client";
+import { incrementGeneratorStat } from "@/actions/generators";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
+import GenStats from "@/components/GenStats";
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
+import { useStats } from "@/hooks/useStats";
 import {
   generateAnalogousScheme,
   generateComplimentaryScheme,
@@ -16,7 +19,7 @@ import { hexToHsl } from "@/utils/convertHexToHsl";
 import { hexToRgb } from "@/utils/convertHexToRgb";
 import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const favourite = {
   name: "colour-palette",
@@ -24,6 +27,7 @@ const favourite = {
 };
 
 const ColourPalette = () => {
+  const { stats } = useStats(favourite.name);
   const [baseColour, setBaseColour] = React.useState("#000000");
   const [colourCount, setColourCount] = useState<number>(6);
   const analagous = useMemo(() => {
@@ -42,13 +46,20 @@ const ColourPalette = () => {
 
   const hexConversion = hexToHsl(baseColour);
 
+  useEffect(() => {
+    incrementGeneratorStat(favourite.name);
+  }, []);
+
   const generateRandomColour = () => {
     setBaseColour(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
   };
 
+  console.log(stats);
+
   return (
     <div className="section">
       <header className="mb-10">
+        <GenStats stats={stats} />
         <Heading module={favourite}>
           <h1 className="h1">Colour Palette</h1>
         </Heading>
@@ -84,7 +95,7 @@ const ColourPalette = () => {
               }
             />
           </div>
-          <div className="w-44">
+          <div className="w-44 mr-auto">
             <p className="font-medium text-xs mb-1 text-foreground">
               Number of colours - {colourCount}
             </p>
@@ -104,6 +115,7 @@ const ColourPalette = () => {
               </span>
             </div>
           </div>
+          <Button onClick={generateRandomColour}>Generate random</Button>
         </div>
 
         <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
@@ -241,10 +253,6 @@ const ColourPalette = () => {
             ))}
           </div>
         </div>
-
-        <footer className="mt-6 w-full flex">
-          <Button onClick={generateRandomColour}>Generate random</Button>
-        </footer>
       </section>
     </div>
   );
