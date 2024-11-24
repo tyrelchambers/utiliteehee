@@ -30,6 +30,8 @@ import ExportDialog from "./ExportDialog";
 import ImportDialog from "./ImportDialog";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [query, setQuery] = React.useState("");
+
   const favourites = useLiveQuery(() => getFavourites());
   const pathname = usePathname();
   const isActive = (url: string) => {
@@ -41,7 +43,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <LightRay />
       <SidebarHeader>
         <VersionSwitcher />
-        <SearchForm />
+        <SearchForm query={query} setQuery={setQuery} />
       </SidebarHeader>
       <SidebarContent className="gap-0">
         <SidebarGroup>
@@ -64,41 +66,51 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
         {/* We create a collapsible SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <Collapsible
-            key={item.title}
-            title={item.title}
-            className="group/collapsible"
-          >
-            <SidebarGroup>
-              <SidebarGroupLabel
-                asChild
-                className="group/label text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-              >
-                <CollapsibleTrigger>
-                  {item.title}{" "}
-                  <ChevronRightIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                </CollapsibleTrigger>
-              </SidebarGroupLabel>
-              <CollapsibleContent>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {item.items.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton
-                          asChild
-                          isActive={isActive(item.url)}
-                        >
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </CollapsibleContent>
-            </SidebarGroup>
-          </Collapsible>
-        ))}
+        {data.navMain
+          .filter((d) => {
+            return (
+              d.items.filter((i) => i.title.toLowerCase().includes(query))
+                .length > 0
+            );
+          })
+          .map((item) => (
+            <Collapsible
+              key={item.title}
+              title={item.title}
+              className="group/collapsible"
+              defaultOpen={!!query}
+            >
+              <SidebarGroup>
+                <SidebarGroupLabel
+                  asChild
+                  className="group/label text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                >
+                  <CollapsibleTrigger>
+                    {item.title}{" "}
+                    <ChevronRightIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                  </CollapsibleTrigger>
+                </SidebarGroupLabel>
+                <CollapsibleContent>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      {item.items
+                        .filter((i) => i.title.toLowerCase().includes(query))
+                        .map((item) => (
+                          <SidebarMenuItem key={item.title}>
+                            <SidebarMenuButton
+                              asChild
+                              isActive={isActive(item.url)}
+                            >
+                              <a href={item.url}>{item.title}</a>
+                            </SidebarMenuButton>
+                          </SidebarMenuItem>
+                        ))}
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </CollapsibleContent>
+              </SidebarGroup>
+            </Collapsible>
+          ))}
         <SidebarGroup className="mt-auto">
           <SidebarGroupContent>
             <SidebarMenu>

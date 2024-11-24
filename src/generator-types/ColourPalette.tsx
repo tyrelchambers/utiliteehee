@@ -1,10 +1,10 @@
 "use client";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
-import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import {
   generateAnalogousScheme,
   generateComplimentaryScheme,
@@ -47,13 +47,11 @@ const ColourPalette = () => {
   };
 
   return (
-    <div className="section">
-      <header className="mb-10">
-        <Heading module={favourite}>
-          <h1 className="h1">Colour Palette</h1>
-        </Heading>
-        <p className="text-muted-foreground">Generate a new colour palette</p>
-      </header>
+    <GeneratorWrapper
+      title="Colour Palette"
+      description="Generate a new colour palette"
+      favourite={favourite}
+    >
       <section className="flex flex-col">
         <div className="flex gap-3 bg-secondary p-4 rounded-xl border border-border items-center">
           <Input
@@ -84,7 +82,7 @@ const ColourPalette = () => {
               }
             />
           </div>
-          <div className="w-44">
+          <div className="w-44 mr-auto">
             <p className="font-medium text-xs mb-1 text-foreground">
               Number of colours - {colourCount}
             </p>
@@ -104,6 +102,7 @@ const ColourPalette = () => {
               </span>
             </div>
           </div>
+          <Button onClick={generateRandomColour}>Generate random</Button>
         </div>
 
         <div className="mt-6 bg-secondary p-4 rounded-xl  border border-border">
@@ -241,12 +240,8 @@ const ColourPalette = () => {
             ))}
           </div>
         </div>
-
-        <footer className="mt-6 w-full flex">
-          <Button onClick={generateRandomColour}>Generate random</Button>
-        </footer>
       </section>
-    </div>
+    </GeneratorWrapper>
   );
 };
 

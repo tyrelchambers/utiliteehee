@@ -16,3 +16,9 @@ model SpotifyPlaylist {
   userDisplayName String
   image           String
 }
+
+model GeneratorStats {
+  id   String @id @default(uuid())
+  name String @unique
+  runs Int
+}

@@ -1,6 +1,5 @@
 import { generateExcuse } from "@/actions/chats";
-import Heading from "@/components/Heading";
-import { Badge } from "@/components/ui/badge";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import React from "react";
 
 const fav = {
@@ -11,22 +10,16 @@ const fav = {
 const Excuse = async () => {
   const resp = await generateExcuse();
   return (
-    <section className="section">
-      <Badge variant="secondary" className="mb-3 rounded-full">
-        AI wrapper. Inconsistancies possible.
-      </Badge>
-      <Heading module={fav}>
-        <h1 className="h1">Excuse Generator</h1>
-      </Heading>
-      <p className="text-muted-foreground mb-6">
-        Need to get out of something? Let us generate a totally beliavable
-        excude. Infallible. No refunds.
-      </p>
-
+    <GeneratorWrapper
+      title="Excuse Generator"
+      description="Need to get out of something? Let us generate a totally beliavable excude. Infallible. No refunds."
+      badgeLabel="AI wrapper. Inconsistancies possible."
+      favourite={fav}
+    >
       <p className="text-foreground p-4 rounded-2xl bg-secondary  max-w-4xl ">
         {resp}
       </p>
-    </section>
+    </GeneratorWrapper>
   );
 };
 

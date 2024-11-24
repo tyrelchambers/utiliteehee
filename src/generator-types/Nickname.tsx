@@ -1,10 +1,9 @@
 "use client";
 import { generateNickname } from "@/actions/chats";
-import Heading from "@/components/Heading";
 import LightRay from "@/components/LightRay";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import { copy } from "@/utils/copy";
 import { Copy } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -27,17 +26,12 @@ const Nickname = () => {
   }, []);
 
   return (
-    <section className="section">
-      <Badge variant="secondary" className="mb-3 rounded-full">
-        AI wrapper. Inconsistancies possible.
-      </Badge>
-      <Heading module={fav}>
-        <h1 className="h1">Nickname Generator</h1>
-      </Heading>
-      <p className="text-muted-foreground mb-6">
-        Get a super awesome nickname.
-      </p>
-
+    <GeneratorWrapper
+      title="Nickname Generator"
+      description="Get a super awesome nickname."
+      favourite={fav}
+      badgeLabel="AI wrapper. Inconsistancies possible."
+    >
       {loading && (
         <div className="flex flex-col gap-6">
           <Skeleton className="h-20  w-full" />
@@ -66,7 +60,7 @@ const Nickname = () => {
           </section>
         ))}
       </div>
-    </section>
+    </GeneratorWrapper>
   );
 };
 

@@ -1,12 +1,11 @@
 "use client";
 import { getFantasyName } from "@/actions/chats";
 import FantasyNameItem from "@/components/FantasyNameItem";
-import Heading from "@/components/Heading";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import React from "react";
 
 const fav = {
@@ -37,19 +36,13 @@ const FantasyName = () => {
   };
 
   return (
-    <div className="section max-w-screen-xl ">
-      <Badge variant="secondary" className="mb-3 rounded-full">
-        AI wrapper. Inconsistancies possible.
-      </Badge>
-      <Heading module={fav}>
-        <h1 className="h1">Fantasy Name Generator</h1>
-      </Heading>
-      <p>
-        Use this tool to get a super awesome name for your next D&amp;D
-        campaign.
-      </p>
-
-      <div className="p-4 rounded-xl border border-border bg-muted/30 my-10">
+    <GeneratorWrapper
+      title="Fantasy Name Generator"
+      description="Use this tool to get a super awesome name for your next D&D campaign."
+      badgeLabel="AI wrapper. Inconsistancies possible."
+      favourite={fav}
+    >
+      <div className="max-w-screen-xl p-4 rounded-xl border border-border bg-muted/30 my-10">
         <Label>Universe</Label>
         <p className="text-sm text-muted-foreground mb-2">
           Generate a name in a specific universe. Leave blank for a random name.
@@ -81,7 +74,7 @@ const FantasyName = () => {
           ))}
         </>
       )}
-    </div>
+    </GeneratorWrapper>
   );
 };
 

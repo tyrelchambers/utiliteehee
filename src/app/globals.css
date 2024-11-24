@@ -106,7 +106,7 @@ body {
     @apply max-h-80 w-full aspect-square flex-1 relative;
   }
   .section {
-    @apply bg-background/60 p-20;
+    @apply bg-background/60 px-20 py-10;
   }
 }
 

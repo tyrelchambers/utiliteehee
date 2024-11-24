@@ -1,7 +1,7 @@
 "use client";
-import Heading from "@/components/Heading";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import React, { useMemo, useState } from "react";
 
 const fav = {
@@ -53,14 +53,11 @@ const BitVisualizer = () => {
   };
 
   return (
-    <section className="section">
-      <Heading module={fav}>
-        <h1 className="h1">Bit Visualizer</h1>
-      </Heading>
-      <p className="text-muted-foreground">
-        This type of tool helped me (the creator of Utiliteehee) visualize
-        numbers as bits.
-      </p>
+    <GeneratorWrapper
+      title="Bit Visualizer"
+      description=" This type of tool helped me (the creator of Utiliteehee) visualize numbers as bits."
+      favourite={fav}
+    >
       <div className="bg-secondary p-4 rounded-xl mt-6 w-full max-w-screen-md ">
         <div className="flex flex-col gap-2">
           <Label>Integer</Label>
@@ -82,7 +79,7 @@ const BitVisualizer = () => {
       <div className="flex gap-3 mt-2">
         <p className="font-mono text-sm">Bytes: {calculateBytes(integer)}</p>
       </div>
-    </section>
+    </GeneratorWrapper>
   );
 };
 
