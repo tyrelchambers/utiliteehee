@@ -1,10 +1,11 @@
 "use client";
+import { incrementGeneratorStat } from "@/actions/generators";
 import GenStats from "@/components/GenStats";
 import Heading from "@/components/Heading";
 import { Badge } from "@/components/ui/badge";
 import { useStats } from "@/hooks/useStats";
 import { Favourite } from "@/lib/dexie";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface Props {
   children: React.ReactNode | React.ReactNode[];
@@ -22,6 +23,10 @@ const GeneratorWrapper = ({
   badgeLabel,
 }: Props) => {
   const { stats } = useStats(favourite.name);
+
+  useEffect(() => {
+    incrementGeneratorStat(favourite.name);
+  }, []);
 
   return (
     <section className="section overflow-x-auto">

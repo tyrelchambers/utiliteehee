@@ -1,6 +1,4 @@
 import { generateExcuse } from "@/actions/chats";
-import Heading from "@/components/Heading";
-import { Badge } from "@/components/ui/badge";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import React from "react";
 

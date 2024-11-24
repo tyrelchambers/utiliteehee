@@ -1,5 +1,4 @@
 "use client";
-import Heading from "@/components/Heading";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";

@@ -1,13 +1,9 @@
 "use client";
-import { incrementGeneratorStat } from "@/actions/generators";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
-import GenStats from "@/components/GenStats";
-import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { useStats } from "@/hooks/useStats";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import {
   generateAnalogousScheme,
@@ -20,7 +16,7 @@ import { hexToHsl } from "@/utils/convertHexToHsl";
 import { hexToRgb } from "@/utils/convertHexToRgb";
 import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 const favourite = {
   name: "colour-palette",
@@ -28,7 +24,6 @@ const favourite = {
 };
 
 const ColourPalette = () => {
-  const { stats } = useStats(favourite.name);
   const [baseColour, setBaseColour] = React.useState("#000000");
   const [colourCount, setColourCount] = useState<number>(6);
   const analagous = useMemo(() => {
@@ -46,10 +41,6 @@ const ColourPalette = () => {
   const tetradic = useMemo(() => generateTetradic(baseColour), [baseColour]);
 
   const hexConversion = hexToHsl(baseColour);
-
-  useEffect(() => {
-    incrementGeneratorStat(favourite.name);
-  }, []);
 
   const generateRandomColour = () => {
     setBaseColour(`#${Math.floor(Math.random() * 16777215).toString(16)}`);

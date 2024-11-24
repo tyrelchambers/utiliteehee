@@ -1,8 +1,6 @@
 "use client";
 import { generateNickname } from "@/actions/chats";
-import Heading from "@/components/Heading";
 import LightRay from "@/components/LightRay";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";

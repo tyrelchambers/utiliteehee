@@ -25,7 +25,6 @@ import {
 import IconSearchModal from "@/components/qr-code/IconSearchModal";
 import * as icons from "lucide-static";
 import { default as NextImage } from "next/image";
-import Heading from "@/components/Heading";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 
 const fav = {

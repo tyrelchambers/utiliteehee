@@ -1,8 +1,6 @@
 "use client";
 import { getFantasyName } from "@/actions/chats";
 import FantasyNameItem from "@/components/FantasyNameItem";
-import Heading from "@/components/Heading";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

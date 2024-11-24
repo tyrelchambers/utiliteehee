@@ -1,6 +1,5 @@
 "use client";
 import { getPlaylists, getRecommendations } from "@/actions/spotify";
-import Heading from "@/components/Heading";
 import SharePlaylistModal from "@/components/SharePlaylistModal";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";

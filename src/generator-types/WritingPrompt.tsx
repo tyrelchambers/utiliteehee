@@ -1,8 +1,6 @@
 "use client";
 import { generateWritingPrompt } from "@/actions/chats";
-import Heading from "@/components/Heading";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Form,

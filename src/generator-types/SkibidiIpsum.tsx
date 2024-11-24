@@ -1,5 +1,4 @@
 "use client";
-import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import { copy } from "@/utils/copy";

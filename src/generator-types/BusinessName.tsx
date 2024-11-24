@@ -1,8 +1,6 @@
 "use client";
 import { generateBusinessName } from "@/actions/chats";
-import Heading from "@/components/Heading";
 import LightRay from "@/components/LightRay";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";

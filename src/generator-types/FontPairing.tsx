@@ -1,5 +1,4 @@
 import FontPairingBody from "@/components/FontPairingBody";
-import Heading from "@/components/Heading";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import React from "react";
 
