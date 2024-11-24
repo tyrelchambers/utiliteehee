@@ -26,8 +26,8 @@ import { usePathname } from "next/navigation";
 import { useLiveQuery } from "dexie-react-hooks";
 import { getFavourites } from "@/lib/dexie";
 import Link from "next/link";
-
-// This is sample data.
+import ExportDialog from "./ExportDialog";
+import ImportDialog from "./ImportDialog";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const favourites = useLiveQuery(() => getFavourites());
@@ -51,7 +51,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupContent>
             <SidebarMenu>
               {favourites?.map((favourite) => (
-                <SidebarMenuItem key={favourite.id}>
+                <SidebarMenuItem key={favourite.name}>
                   <SidebarMenuButton
                     asChild
                     isActive={isActive(favourite.name)}
@@ -99,6 +99,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarGroup>
           </Collapsible>
         ))}
+        <SidebarGroup className="mt-auto">
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem key="export">
+                <ExportDialog />
+              </SidebarMenuItem>
+
+              <SidebarMenuItem key="import">
+                <ImportDialog />
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
     </Sidebar>

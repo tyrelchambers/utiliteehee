@@ -12,7 +12,7 @@ const UUID = () => {
   return (
     <div className="section centered">
       <Heading module={fav}>
-        <h1 className="h1 mb-4">UUID Generator</h1>
+        <h1 className="h1 ">UUID Generator</h1>
       </Heading>
 
       <section className="section-body max-w-2xl">
