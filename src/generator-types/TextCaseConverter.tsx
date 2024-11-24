@@ -1,4 +1,5 @@
 "use client";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -23,6 +24,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+const fav = {
+  name: "text-case-converter",
+  label: "Text Case Converter",
+};
 
 const formSchema = z.object({
   text: z.string().min(1, {
@@ -75,7 +81,9 @@ const TextCaseConverter = () => {
 
   return (
     <section className="section max-w-screen-lg">
-      <h1 className="h1 mb-10">Text Case Converter</h1>
+      <Heading module={fav}>
+        <h1 className="h1 mb-10">Text Case Converter</h1>
+      </Heading>
       <Form {...form}>
         <form
           className="w-full flex flex-col gap-6 border border-border p-6 rounded-xl bg-secondary"

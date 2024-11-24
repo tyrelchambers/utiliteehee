@@ -1,13 +1,19 @@
 "use client";
+import Heading from "@/components/Heading";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useMemo, useState } from "react";
+
+const fav = {
+  name: "bit-visualizer",
+  label: "Bit Visualizer",
+};
 
 const getLocations = (bits: string[]) => {
   const locations: number[] = [];
 
   for (let i = 0; i < bits.length; i++) {
-    let bitLocation = Math.pow(2, i);
+    const bitLocation = Math.pow(2, i);
     locations.push(bitLocation);
   }
 
@@ -28,7 +34,7 @@ const BitVisualizer = () => {
 
     return bitsArray.map((bit, index) => {
       return (
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2" key={index}>
           <span
             key={index}
             className="text-foreground bg-background border border-border p-2 rounded-md w-full h-10 flex items-center justify-center"
@@ -48,7 +54,9 @@ const BitVisualizer = () => {
 
   return (
     <section className="section">
-      <h1 className="h1">Bit Visualizer</h1>
+      <Heading module={fav}>
+        <h1 className="h1">Bit Visualizer</h1>
+      </Heading>
       <p className="text-muted-foreground">
         This type of tool helped me (the creator of Utiliteehee) visualize
         numbers as bits.

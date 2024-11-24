@@ -1,5 +1,6 @@
 "use client";
 import { getPlaylists, getRecommendations } from "@/actions/spotify";
+import Heading from "@/components/Heading";
 import SharePlaylistModal from "@/components/SharePlaylistModal";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -17,6 +18,11 @@ import { SpotifyPlaylist } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
+
+const fav = {
+  name: "mood-playlist",
+  label: "Mood Playlist",
+};
 
 const MoodPlaylist = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -51,7 +57,9 @@ const MoodPlaylist = () => {
 
   return (
     <section className="section">
-      <h1 className="h1">Mood Playlist Generator</h1>
+      <Heading module={fav}>
+        <h1 className="h1">Mood Playlist Generator</h1>
+      </Heading>
       <p className="text-muted-foreground max-w-6xl">
         This playlist generator uses Spotify to curate a playlist based on your
         mood. Also checkout the playlists added by the community. If you have a

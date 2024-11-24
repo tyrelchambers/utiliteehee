@@ -25,6 +25,12 @@ import {
 import IconSearchModal from "@/components/qr-code/IconSearchModal";
 import * as icons from "lucide-static";
 import { default as NextImage } from "next/image";
+import Heading from "@/components/Heading";
+
+const fav = {
+  name: "qrcode",
+  label: "QR Code Generator",
+};
 
 const formSchema = z.object({
   text: z.string().min(1, {
@@ -156,7 +162,9 @@ const QRCodeGen = () => {
 
   return (
     <div className="section">
-      <h1 className="h1 mb-6">QR Code</h1>
+      <Heading module={fav}>
+        <h1 className="h1 mb-6">QR Code</h1>
+      </Heading>
       <Form {...form}>
         <form
           className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl bg-secondary"

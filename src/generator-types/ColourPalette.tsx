@@ -1,6 +1,7 @@
 "use client";
 import ColourWrapper from "@/components/ColourWrapper";
 import ExportColour from "@/components/ExportColour";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
@@ -16,6 +17,11 @@ import { hexToRgb } from "@/utils/convertHexToRgb";
 import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
 import React, { useMemo, useState } from "react";
+
+const favourite = {
+  name: "colour-palette",
+  label: "Colour Palette",
+};
 
 const ColourPalette = () => {
   const [baseColour, setBaseColour] = React.useState("#000000");
@@ -43,7 +49,9 @@ const ColourPalette = () => {
   return (
     <div className="section">
       <header className="mb-10">
-        <h1 className="h1 mb-2">Colour Palette</h1>
+        <Heading module={favourite}>
+          <h1 className="h1 mb-2">Colour Palette</h1>
+        </Heading>
         <p className="text-muted-foreground">Generate a new colour palette</p>
       </header>
       <section className="flex flex-col">
