@@ -1,4 +1,4 @@
-import { readFile, readFileSync } from "fs";
+import { readFileSync } from "fs";
 import path from "path";
 
 export async function GET(
