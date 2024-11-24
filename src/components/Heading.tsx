@@ -6,11 +6,11 @@ const Heading = ({
   module,
   children,
 }: {
-  module: Omit<IFavourite, "id">;
+  module: IFavourite;
   children: React.ReactNode;
 }) => {
   return (
-    <header className="flex items-center gap-3">
+    <header className="flex items-center gap-3 mb-2">
       {children} <Favourite data={module} />
     </header>
   );

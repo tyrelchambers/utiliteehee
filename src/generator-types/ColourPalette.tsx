@@ -50,7 +50,7 @@ const ColourPalette = () => {
     <div className="section">
       <header className="mb-10">
         <Heading module={favourite}>
-          <h1 className="h1 mb-2">Colour Palette</h1>
+          <h1 className="h1">Colour Palette</h1>
         </Heading>
         <p className="text-muted-foreground">Generate a new colour palette</p>
       </header>

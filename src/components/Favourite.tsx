@@ -11,9 +11,7 @@ import {
 } from "@/lib/dexie";
 import { useLiveQuery } from "dexie-react-hooks";
 
-const Favourite = ({ data }: { data: Omit<IFavourite, "id"> }) => {
-  console.log(data);
-
+const Favourite = ({ data }: { data: IFavourite }) => {
   const isFavourite = useLiveQuery(() =>
     db.favourites.where("name").equals(data.name).count()
   );

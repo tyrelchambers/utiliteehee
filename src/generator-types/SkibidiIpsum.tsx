@@ -22,7 +22,7 @@ const SkibidiIpsum = () => {
   return (
     <div className="section max-w-screen-xl">
       <Heading module={fav}>
-        <h1 className="h1 mb-2">Skibidi Ipsum</h1>
+        <h1 className="h1">Skibidi Ipsum</h1>
       </Heading>
       <p className="text-muted-foreground mb-6">
         The dankest new ipsum generator inspired by TikTok culture. Skibidi your
