@@ -24,7 +24,7 @@ import { data } from "@/index.routes";
 import LightRay from "./LightRay";
 import { usePathname } from "next/navigation";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db, getFavourites } from "@/lib/dexie";
+import { getFavourites } from "@/lib/dexie";
 import Link from "next/link";
 
 // This is sample data.

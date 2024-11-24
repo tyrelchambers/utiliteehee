@@ -13,7 +13,7 @@ const getLocations = (bits: string[]) => {
   const locations: number[] = [];
 
   for (let i = 0; i < bits.length; i++) {
-    let bitLocation = Math.pow(2, i);
+    const bitLocation = Math.pow(2, i);
     locations.push(bitLocation);
   }
 
@@ -34,7 +34,7 @@ const BitVisualizer = () => {
 
     return bitsArray.map((bit, index) => {
       return (
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2" key={index}>
           <span
             key={index}
             className="text-foreground bg-background border border-border p-2 rounded-md w-full h-10 flex items-center justify-center"
