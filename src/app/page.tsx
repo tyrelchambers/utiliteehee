@@ -1,6 +1,7 @@
 import StyledIcon from "@/components/StyledIcon";
 import { buttonVariants } from "@/components/ui/button";
 import UtiliteeList from "@/components/UtiliteeList";
+import YourFavourites from "@/components/YourFavourites";
 import { faMessageDots } from "@fortawesome/pro-solid-svg-icons";
 
 export default async function Home({
@@ -42,6 +43,9 @@ export default async function Home({
             Suggest a feature
           </a>
         </div>
+      </section>
+      <section className="h-20 max-w-screen-2xl mx-auto w-full">
+        <YourFavourites />
       </section>
       <UtiliteeList searchParams={query} />
     </section>
