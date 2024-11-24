@@ -27,6 +27,11 @@ import * as icons from "lucide-static";
 import { default as NextImage } from "next/image";
 import Heading from "@/components/Heading";
 
+const fav = {
+  name: "qrcode",
+  label: "QR Code Generator",
+};
+
 const formSchema = z.object({
   text: z.string().min(1, {
     message: "Text is required",
@@ -157,7 +162,7 @@ const QRCodeGen = () => {
 
   return (
     <div className="section">
-      <Heading module="qrcode">
+      <Heading module={fav}>
         <h1 className="h1 mb-6">QR Code</h1>
       </Heading>
       <Form {...form}>

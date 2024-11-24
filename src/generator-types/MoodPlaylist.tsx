@@ -19,6 +19,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
+const fav = {
+  name: "mood-playlist",
+  label: "Mood Playlist",
+};
+
 const MoodPlaylist = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [loadingPlaylists, setLoadingPlaylists] = React.useState<boolean>(true);
@@ -52,7 +57,7 @@ const MoodPlaylist = () => {
 
   return (
     <section className="section">
-      <Heading module="mood-playlist">
+      <Heading module={fav}>
         <h1 className="h1">Mood Playlist Generator</h1>
       </Heading>
       <p className="text-muted-foreground max-w-6xl">

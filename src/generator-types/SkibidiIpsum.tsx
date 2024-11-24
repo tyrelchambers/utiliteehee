@@ -6,6 +6,11 @@ import { generateSkibidiIpsum } from "@/utils/skibidiIpsum";
 import { Copy, Shuffle } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
+const fav = {
+  name: "skibidi-ipsum",
+  label: "Skibidi Ipsum",
+};
+
 const SkibidiIpsum = () => {
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState<string[]>([]);
@@ -16,7 +21,7 @@ const SkibidiIpsum = () => {
 
   return (
     <div className="section max-w-screen-xl">
-      <Heading module="skibidi-ipsum">
+      <Heading module={fav}>
         <h1 className="h1 mb-2">Skibidi Ipsum</h1>
       </Heading>
       <p className="text-muted-foreground mb-6">

@@ -4,6 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useMemo, useState } from "react";
 
+const fav = {
+  name: "bit-visualizer",
+  label: "Bit Visualizer",
+};
+
 const getLocations = (bits: string[]) => {
   const locations: number[] = [];
 
@@ -49,7 +54,7 @@ const BitVisualizer = () => {
 
   return (
     <section className="section">
-      <Heading module="bit-visualizer">
+      <Heading module={fav}>
         <h1 className="h1">Bit Visualizer</h1>
       </Heading>
       <p className="text-muted-foreground">

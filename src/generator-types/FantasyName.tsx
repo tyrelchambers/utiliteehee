@@ -8,6 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
+
+const fav = {
+  name: "fantasy-name",
+  label: "Fantasy Name",
+};
+
 interface FantasyNameResponse {
   name: string;
   backstory: string;
@@ -35,7 +41,7 @@ const FantasyName = () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <Heading module="fantasy-name">
+      <Heading module={fav}>
         <h1 className="h1">Fantasy Name Generator</h1>
       </Heading>
       <p>

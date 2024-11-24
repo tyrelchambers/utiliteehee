@@ -24,13 +24,13 @@ import { data } from "@/index.routes";
 import LightRay from "./LightRay";
 import { usePathname } from "next/navigation";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "@/lib/dexie";
+import { db, getFavourites } from "@/lib/dexie";
 import Link from "next/link";
 
 // This is sample data.
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const favourites = useLiveQuery(() => db.favourites.toArray());
+  const favourites = useLiveQuery(() => getFavourites());
   const pathname = usePathname();
   const isActive = (url: string) => {
     return pathname === url;
@@ -56,7 +56,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     asChild
                     isActive={isActive(favourite.name)}
                   >
-                    <Link href={favourite.name}>{favourite.name}</Link>
+                    <Link href={favourite.name}>{favourite.label}</Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

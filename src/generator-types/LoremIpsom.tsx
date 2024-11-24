@@ -6,6 +6,11 @@ import { generateLoremIpsum } from "@/utils/loremIpsum";
 import { Copy, Shuffle } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
+const fav = {
+  name: "lorem-ipsum",
+  label: "Lorem Ipsum",
+};
+
 const LoremIpsum = () => {
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState<string[]>([]);
@@ -16,7 +21,7 @@ const LoremIpsum = () => {
 
   return (
     <div className="section max-w-screen-xl">
-      <Heading module="lorem-ipsum">
+      <Heading module={fav}>
         <h1 className="h1">Lorem Ipsum</h1>
       </Heading>
       <p className="text-muted-foreground mb-6">

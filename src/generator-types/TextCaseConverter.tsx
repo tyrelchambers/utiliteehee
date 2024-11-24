@@ -25,6 +25,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+const fav = {
+  name: "text-case-converter",
+  label: "Text Case Converter",
+};
+
 const formSchema = z.object({
   text: z.string().min(1, {
     message: "Text is required",
@@ -76,7 +81,7 @@ const TextCaseConverter = () => {
 
   return (
     <section className="section max-w-screen-lg">
-      <Heading module="text-case-converter">
+      <Heading module={fav}>
         <h1 className="h1 mb-10">Text Case Converter</h1>
       </Heading>
       <Form {...form}>

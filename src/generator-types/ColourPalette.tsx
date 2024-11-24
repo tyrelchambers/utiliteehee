@@ -18,6 +18,11 @@ import { copy } from "@/utils/copy";
 import { hslToHex } from "@/utils/hslToHex";
 import React, { useMemo, useState } from "react";
 
+const favourite = {
+  name: "colour-palette",
+  label: "Colour Palette",
+};
+
 const ColourPalette = () => {
   const [baseColour, setBaseColour] = React.useState("#000000");
   const [colourCount, setColourCount] = useState<number>(6);
@@ -44,7 +49,7 @@ const ColourPalette = () => {
   return (
     <div className="section">
       <header className="mb-10">
-        <Heading module="colour-palette">
+        <Heading module={favourite}>
           <h1 className="h1 mb-2">Colour Palette</h1>
         </Heading>
         <p className="text-muted-foreground">Generate a new colour palette</p>

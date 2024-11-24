@@ -14,6 +14,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+const fav = {
+  name: "business-name",
+  label: "Business Name",
+};
+
 const formSchema = z.object({
   query: z.string().optional(),
   sector: z.string().optional(),
@@ -70,7 +75,7 @@ const BusinessName = () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <Heading module="business-name">
+      <Heading module={fav}>
         <h1 className="h1 font-faculty">Business Name Generator</h1>
       </Heading>
       <p className="text-muted-foreground mb-10">

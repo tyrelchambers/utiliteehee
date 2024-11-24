@@ -3,6 +3,11 @@ import Heading from "@/components/Heading";
 import { Badge } from "@/components/ui/badge";
 import React from "react";
 
+const fav = {
+  name: "excuse",
+  label: "Excuse Generator",
+};
+
 const Excuse = async () => {
   const resp = await generateExcuse();
   return (
@@ -10,7 +15,7 @@ const Excuse = async () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <Heading module="excuse">
+      <Heading module={fav}>
         <h1 className="h1">Excuse Generator</h1>
       </Heading>
       <p className="text-muted-foreground mb-6">

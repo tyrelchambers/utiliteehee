@@ -9,6 +9,11 @@ import { copy } from "@/utils/copy";
 import { Copy } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
+const fav = {
+  name: "nickname",
+  label: "Nickname Generator",
+};
+
 const Nickname = () => {
   const [loading, setLoading] = useState(true);
   const [names, setNames] = useState<Record<string, string>[]>([]);
@@ -26,7 +31,7 @@ const Nickname = () => {
       <Badge variant="secondary" className="mb-3 rounded-full">
         AI wrapper. Inconsistancies possible.
       </Badge>
-      <Heading module="nickname">
+      <Heading module={fav}>
         <h1 className="h1">Nickname Generator</h1>
       </Heading>
       <p className="text-muted-foreground mb-6">

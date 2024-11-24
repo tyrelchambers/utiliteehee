@@ -23,6 +23,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+const fav = {
+  name: "writing-prompt",
+  label: "Writing Prompt",
+};
+
 const formSchema = z.object({
   interests: z.string().optional(),
   style: z.string().optional(),
@@ -66,7 +71,7 @@ const WritingPrompt = () => {
         <Badge variant="secondary" className="mb-3 rounded-full">
           AI wrapper. Yes, another one.
         </Badge>
-        <Heading module="writing-prompt">
+        <Heading module={fav}>
           <h1 className="h1">Writing Prompt</h1>
         </Heading>
         <p className="text-muted-foreground mb-6">

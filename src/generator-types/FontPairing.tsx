@@ -2,6 +2,11 @@ import FontPairingBody from "@/components/FontPairingBody";
 import Heading from "@/components/Heading";
 import React from "react";
 
+const fav = {
+  name: "font-pairing",
+  label: "Font Pairing",
+};
+
 export interface Font {
   items: {
     family: string;
@@ -34,7 +39,7 @@ const FontPairing = async () => {
 
   return (
     <section className="section">
-      <Heading module="font-pairing">
+      <Heading module={fav}>
         <h1 className="h1">Font Pairing</h1>
       </Heading>
       <p className="text-muted-foreground mb-6">
