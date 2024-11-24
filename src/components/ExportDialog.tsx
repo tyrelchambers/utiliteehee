@@ -20,7 +20,9 @@ const ExportDialog = () => {
     const favs = await db.favourites.toArray();
     const fileName = await exportFavourites(favs);
     const file = await fetch(`/exports/${fileName}`);
+
     const blob = await file.blob();
+
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;

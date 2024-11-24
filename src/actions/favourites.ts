@@ -8,21 +8,14 @@ import path from "path";
 export const exportFavourites = async (data: Favourite[]) => {
   const randomUUID = cuid2.createId();
   const fileName = `${randomUUID}-favourites.json`;
-  const tempPath = path.resolve(
-    __dirname,
-    "../../../../public/exports",
-    fileName
-  );
+  const tempPath = path.resolve(process.cwd(), "exports", fileName);
+  console.log(process.cwd());
   await writeFileSync(tempPath, JSON.stringify(data));
 
   return fileName;
 };
 
 export const deleteFavourites = async (fileName: string) => {
-  const tempPath = path.resolve(
-    __dirname,
-    "../../../../public/exports",
-    fileName
-  );
+  const tempPath = path.resolve(process.cwd(), "exports", fileName);
   await rmSync(tempPath);
 };
