@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import { copy } from "@/utils/copy";
 import { faSpinner } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -66,159 +67,158 @@ const WritingPrompt = () => {
   };
 
   return (
-    <section className="section grid grid-cols-[760px_760px] gap-10">
-      <div className="flex flex-col">
-        <Badge variant="secondary" className="mb-3 rounded-full">
-          AI wrapper. Yes, another one.
-        </Badge>
-        <Heading module={fav}>
-          <h1 className="h1">Writing Prompt</h1>
-        </Heading>
-        <p className="text-muted-foreground mb-6">
-          Use this tool to get a writing prompt. Hopefully it helps.
-        </p>
-        <Alert className="mb-6">
-          <QuestionMarkCircledIcon />
-          <AlertTitle>Information</AlertTitle>
-          <AlertDescription>
-            Leave fields empty for a randomly generated prompt.
-          </AlertDescription>
-        </Alert>
+    <GeneratorWrapper
+      title="Writing Prompt Generator"
+      description="Use this tool to get a writing prompt. Hopefully it helps."
+      favourite={fav}
+      badgeLabel="AI wrapper. Yes, another one."
+    >
+      <section className="grid grid-cols-[760px_760px] gap-10">
+        <div className="flex flex-col">
+          <Alert className="mb-6">
+            <QuestionMarkCircledIcon />
+            <AlertTitle>Information</AlertTitle>
+            <AlertDescription>
+              Leave fields empty for a randomly generated prompt.
+            </AlertDescription>
+          </Alert>
 
-        <Form {...form}>
-          <form
-            className="flex flex-col gap-4 bg-secondary p-4 rounded-xl border border-border"
-            onSubmit={form.handleSubmit(submit)}
-          >
-            <FormField
-              name="interests"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Interests</FormLabel>
-                  <FormDescription>
-                    Comma separated list of interests to base the prompt around.
-                  </FormDescription>
-                  <Input {...field} placeholder="ex: books, movies, music" />
-                </FormItem>
-              )}
-            />
+          <Form {...form}>
+            <form
+              className="flex flex-col gap-4 bg-secondary p-4 rounded-xl border border-border"
+              onSubmit={form.handleSubmit(submit)}
+            >
+              <FormField
+                name="interests"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Interests</FormLabel>
+                    <FormDescription>
+                      Comma separated list of interests to base the prompt
+                      around.
+                    </FormDescription>
+                    <Input {...field} placeholder="ex: books, movies, music" />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="style"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Writing style</FormLabel>
-                  <FormDescription>
-                    Comma separated list of writing styles
-                  </FormDescription>
-                  <Input
-                    {...field}
-                    placeholder="ex: third person, serious, third person"
-                  />
-                </FormItem>
-              )}
-            />
+              <FormField
+                name="style"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Writing style</FormLabel>
+                    <FormDescription>
+                      Comma separated list of writing styles
+                    </FormDescription>
+                    <Input
+                      {...field}
+                      placeholder="ex: third person, serious, third person"
+                    />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="tone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tone</FormLabel>
-                  <FormDescription>
-                    Comma separated list of tones
-                  </FormDescription>
-                  <Input {...field} placeholder="ex: serious, funny" />
-                </FormItem>
-              )}
-            />
+              <FormField
+                name="tone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Tone</FormLabel>
+                    <FormDescription>
+                      Comma separated list of tones
+                    </FormDescription>
+                    <Input {...field} placeholder="ex: serious, funny" />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="era"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Era</FormLabel>
-                  <Input {...field} placeholder="ex: modern, medieval" />
-                </FormItem>
-              )}
-            />
+              <FormField
+                name="era"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Era</FormLabel>
+                    <Input {...field} placeholder="ex: modern, medieval" />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="themes"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Themes</FormLabel>
-                  <FormDescription>
-                    Comma separated list of themes
-                  </FormDescription>
-                  <Input {...field} placeholder="ex: love, friendship" />
-                </FormItem>
-              )}
-            />
+              <FormField
+                name="themes"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Themes</FormLabel>
+                    <FormDescription>
+                      Comma separated list of themes
+                    </FormDescription>
+                    <Input {...field} placeholder="ex: love, friendship" />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="writingStyle"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Writing style</FormLabel>
-                  <FormDescription>
-                    Comma separated list of writing styles
-                  </FormDescription>
-                  <Input
-                    {...field}
-                    placeholder="ex: fast-paced, atmospheric, introspective dialogue"
-                  />
-                </FormItem>
-              )}
-            />
+              <FormField
+                name="writingStyle"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Writing style</FormLabel>
+                    <FormDescription>
+                      Comma separated list of writing styles
+                    </FormDescription>
+                    <Input
+                      {...field}
+                      placeholder="ex: fast-paced, atmospheric, introspective dialogue"
+                    />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="constraints"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Constraints</FormLabel>
-                  <FormDescription>
-                    Comma separated list of constraints
-                  </FormDescription>
-                  <Input
-                    {...field}
-                    placeholder="ex: no grammatical errors, no profanity, must include a mystery"
-                  />
-                </FormItem>
-              )}
-            />
+              <FormField
+                name="constraints"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Constraints</FormLabel>
+                    <FormDescription>
+                      Comma separated list of constraints
+                    </FormDescription>
+                    <Input
+                      {...field}
+                      placeholder="ex: no grammatical errors, no profanity, must include a mystery"
+                    />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              name="additionalInfo"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Additional Info</FormLabel>
-                  <FormDescription>
-                    Additional information to provide the prompt
-                  </FormDescription>
-                  <Textarea {...field} />
-                </FormItem>
-              )}
-            />
-            <Button disabled={loading}>
-              {loading && <FontAwesomeIcon icon={faSpinner} spin />} Generate
-              Prompt
+              <FormField
+                name="additionalInfo"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Additional Info</FormLabel>
+                    <FormDescription>
+                      Additional information to provide the prompt
+                    </FormDescription>
+                    <Textarea {...field} />
+                  </FormItem>
+                )}
+              />
+              <Button disabled={loading}>
+                {loading && <FontAwesomeIcon icon={faSpinner} spin />} Generate
+                Prompt
+              </Button>
+            </form>
+          </Form>
+        </div>
+
+        <div className="p-4 rounded-xl bg-secondary">
+          <header className="flex items-center justify-between">
+            <p className="font-bold font-faculty">Your generated prompt</p>
+            <Button onClick={() => copy(prompt)} size="sm">
+              Copy
             </Button>
-          </form>
-        </Form>
-      </div>
+          </header>
+          <Separator className="my-6" />
 
-      <div className="p-4 rounded-xl bg-secondary">
-        <header className="flex items-center justify-between">
-          <p className="font-bold font-faculty">Your generated prompt</p>
-          <Button onClick={() => copy(prompt)} size="sm">
-            Copy
-          </Button>
-        </header>
-        <Separator className="my-6" />
-
-        <p className="whitespace-pre-wrap">{prompt}</p>
-      </div>
-    </section>
+          <p className="whitespace-pre-wrap">{prompt}</p>
+        </div>
+      </section>
+    </GeneratorWrapper>
   );
 };
 

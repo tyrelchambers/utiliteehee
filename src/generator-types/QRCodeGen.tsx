@@ -26,6 +26,7 @@ import IconSearchModal from "@/components/qr-code/IconSearchModal";
 import * as icons from "lucide-static";
 import { default as NextImage } from "next/image";
 import Heading from "@/components/Heading";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 
 const fav = {
   name: "qrcode",
@@ -161,10 +162,11 @@ const QRCodeGen = () => {
   }
 
   return (
-    <div className="section">
-      <Heading module={fav}>
-        <h1 className="h1 mb-6">QR Code</h1>
-      </Heading>
+    <GeneratorWrapper
+      title="QR Code Generator"
+      description="Generate a QR Code for your next big project."
+      favourite={fav}
+    >
       <Form {...form}>
         <form
           className="rounded-xl border border-border p-3 w-full flex flex-col gap-3 max-w-xl bg-secondary"
@@ -293,7 +295,7 @@ const QRCodeGen = () => {
           </footer>
         </form>
       </Form>
-    </div>
+    </GeneratorWrapper>
   );
 };
 

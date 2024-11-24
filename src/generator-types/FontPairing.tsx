@@ -1,5 +1,6 @@
 import FontPairingBody from "@/components/FontPairingBody";
 import Heading from "@/components/Heading";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import React from "react";
 
 const fav = {
@@ -38,16 +39,13 @@ const FontPairing = async () => {
   const allFonts = await getFonts();
 
   return (
-    <section className="section">
-      <Heading module={fav}>
-        <h1 className="h1">Font Pairing</h1>
-      </Heading>
-      <p className="text-muted-foreground mb-6">
-        Find the best font pairings in the universe with this handy font pairing
-        tool.
-      </p>
+    <GeneratorWrapper
+      title="Font Pairing"
+      description="Find the best font pairings in the universe with this handy font pairing tool."
+      favourite={fav}
+    >
       <FontPairingBody fonts={allFonts} />
-    </section>
+    </GeneratorWrapper>
   );
 };
 

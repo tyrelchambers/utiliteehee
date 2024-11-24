@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import { copy } from "@/utils/copy";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Copy } from "lucide-react";
@@ -71,18 +72,12 @@ const BusinessName = () => {
   };
 
   return (
-    <section className="section">
-      <Badge variant="secondary" className="mb-3 rounded-full">
-        AI wrapper. Inconsistancies possible.
-      </Badge>
-      <Heading module={fav}>
-        <h1 className="h1 font-faculty">Business Name Generator</h1>
-      </Heading>
-      <p className="text-muted-foreground mb-10">
-        Maybe we can jumpstart the creative process. But we all know naming
-        things is the most difficult thng in life.
-      </p>
-
+    <GeneratorWrapper
+      title="Business Name Generator"
+      description="Maybe we can jumpstart the creative process. But we all know naming things is the most difficult thng in life."
+      badgeLabel="AI wrapper. Inconsistancies possible."
+      favourite={fav}
+    >
       <Form {...form}>
         <form
           className=" max-w-screen-xl flex flex-col mb-6"
@@ -146,7 +141,7 @@ const BusinessName = () => {
           ))}
         </div>
       )}
-    </section>
+    </GeneratorWrapper>
   );
 };
 

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { useStats } from "@/hooks/useStats";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import {
   generateAnalogousScheme,
   generateComplimentaryScheme,
@@ -54,17 +55,12 @@ const ColourPalette = () => {
     setBaseColour(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
   };
 
-  console.log(stats);
-
   return (
-    <div className="section">
-      <header className="mb-10">
-        <GenStats stats={stats} />
-        <Heading module={favourite}>
-          <h1 className="h1">Colour Palette</h1>
-        </Heading>
-        <p className="text-muted-foreground">Generate a new colour palette</p>
-      </header>
+    <GeneratorWrapper
+      title="Colour Palette"
+      description="Generate a new colour palette"
+      favourite={favourite}
+    >
       <section className="flex flex-col">
         <div className="flex gap-3 bg-secondary p-4 rounded-xl border border-border items-center">
           <Input
@@ -254,7 +250,7 @@ const ColourPalette = () => {
           </div>
         </div>
       </section>
-    </div>
+    </GeneratorWrapper>
   );
 };
 

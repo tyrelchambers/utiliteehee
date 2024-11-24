@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 import { toSarcasticCase, toTitleCase } from "@/utils/caseConverter";
 import { copy } from "@/utils/copy";
 import { generateSkibidiIpsum } from "@/utils/skibidiIpsum";
@@ -80,10 +81,11 @@ const TextCaseConverter = () => {
   }
 
   return (
-    <section className="section max-w-screen-lg">
-      <Heading module={fav}>
-        <h1 className="h1 mb-10">Text Case Converter</h1>
-      </Heading>
+    <GeneratorWrapper
+      title="Text Case Converter"
+      description="Convert text to lowercase, uppercase, sarcastic, or title case."
+      favourite={fav}
+    >
       <Form {...form}>
         <form
           className="w-full flex flex-col gap-6 border border-border p-6 rounded-xl bg-secondary"
@@ -148,7 +150,7 @@ const TextCaseConverter = () => {
           </footer>
         </form>
       </Form>
-    </section>
+    </GeneratorWrapper>
   );
 };
 

@@ -2,6 +2,7 @@ import Heading from "@/components/Heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Create from "@/components/uuid/Create";
 import Validate from "@/components/uuid/Validate";
+import GeneratorWrapper from "@/layouts/GeneratorWrapper";
 
 const fav = {
   name: "uuid",
@@ -10,11 +11,11 @@ const fav = {
 
 const UUID = () => {
   return (
-    <div className="section centered">
-      <Heading module={fav}>
-        <h1 className="h1 ">UUID Generator</h1>
-      </Heading>
-
+    <GeneratorWrapper
+      title="UUID Generator"
+      description="Generate and validate UUIDs"
+      favourite={fav}
+    >
       <section className="section-body max-w-2xl">
         <Tabs className="w-full" defaultValue="create">
           <TabsList className="w-full">
@@ -33,7 +34,7 @@ const UUID = () => {
           </TabsContent>
         </Tabs>
       </section>
-    </div>
+    </GeneratorWrapper>
   );
 };
 
