@@ -1,5 +1,5 @@
 "use client";
-import { Favourite, getFavourites, removeFavourite } from "@/lib/dexie";
+import { getFavourites, removeFavourite } from "@/lib/dexie";
 import {
   faExternalLink,
   faHeartCircleMinus,
@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLiveQuery } from "dexie-react-hooks";
 import Link from "next/link";
-import React, { MouseEvent, MouseEventHandler } from "react";
+import React from "react";
 import { Button } from "./ui/button";
 
 const YourFavourites = () => {
