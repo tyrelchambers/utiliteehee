@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 interface Props {
   children: React.ReactNode | React.ReactNode[];
   title: string;
-  description: string;
+  description?: string;
   badgeLabel?: string;
   favourite: Favourite;
 }
@@ -29,21 +29,25 @@ const GeneratorWrapper = ({
   }, []);
 
   return (
-    <section className="section overflow-x-auto">
-      <header className="mb-10">
-        <GenStats stats={stats} />
-        {badgeLabel && (
-          <Badge variant="secondary" className="mb-3 rounded-full">
-            {badgeLabel}
-          </Badge>
-        )}
-        <Heading module={favourite}>
-          <h1 className="h1">{title}</h1>
-        </Heading>
-        <p className="text-muted-foreground">{description}</p>
-      </header>
+    <section className="section overflow-x-auto  generator-wrapper">
+      <div className="relative z-10">
+        <header className="mb-10">
+          <GenStats stats={stats} />
+          {badgeLabel && (
+            <Badge variant="secondary" className="mb-3 rounded-full">
+              {badgeLabel}
+            </Badge>
+          )}
+          <Heading module={favourite}>
+            <h1 className="h1">{title}</h1>
+          </Heading>
+          {description && (
+            <p className="text-muted-foreground">{description}</p>
+          )}
+        </header>
 
-      {children}
+        {children}
+      </div>
     </section>
   );
 };

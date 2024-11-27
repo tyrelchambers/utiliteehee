@@ -1,6 +1,7 @@
 "use server";
 
 import { convertCommaStringToArray } from "@/utils/convertCommaStringToArray";
+import { ProfileInfo } from "@/utils/githubBattlerHelpers";
 
 const WEBUI_CHATS_URL = `${process.env.WEBUI_URL}/api/chat/completions`;
 
@@ -238,6 +239,42 @@ export const getRomanEmpireFacts = async () => {
       {
         role: "user",
         content: prompt,
+      },
+    ],
+  };
+
+  const resp = await fetchResponse(structure);
+
+  return resp;
+};
+
+export const generateImagePrompt = async (data: ProfileInfo) => {
+  const structure = {
+    model: process.env.OLLAMA_MODEL,
+    messages: [
+      {
+        role: "system",
+        content: `You are an artist responsible for creating effective prompts to be fed to an text-to-image generator. Generate a prompt that will tell the text-to-image generator to create an image in a drawn style and watercooler style. This prompt represents creating a playing card (like yugi-oh or magic the gathering). This playing card is for a game where github profiles can battle each other. I need a prompt to create an image to represent the profile as if it were a trading card. You will be given stats.
+          
+          these stats will represent power levels which should be reflected in the prompt to express a greater power level.
+
+          --- Context stats ---
+          Commits: ${data.commits}
+          Repos: ${data.repos}
+          Followers: ${data.followers}
+          Stars: ${data.stars}
+          --- end context ---
+
+          Don't include these stats on the image. Only the username. This card should look edgy and intimidating.
+
+          Just return the prompt to plug right into the text-to-image generator. No other follow up responses.
+          `,
+      },
+      {
+        role: "user",
+        content: `Generate a prompt to create an image to represent this profile: ${JSON.stringify(
+          data
+        )}`,
       },
     ],
   };

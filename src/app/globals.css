@@ -182,3 +182,48 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
+
+.glow {
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2),
+    0px 0px 20px rgba(255, 255, 255, 0.2), 0px 0px 30px rgba(255, 255, 255, 0.2),
+    0px 0px 40px rgba(255, 255, 255, 0.2), 0px 0px 50px rgba(255, 255, 255, 0.2),
+    0px 0px 60px rgba(255, 255, 255, 0.2), 0px 0px 70px rgba(255, 255, 255, 0.2);
+}
+
+.glow-green {
+  text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.4),
+    0px 0px 20px rgba(0, 255, 0, 0.4), 0px 0px 30px rgba(0, 255, 0, 0.4),
+    0px 0px 40px rgba(0, 255, 0, 0.4), 0px 0px 50px rgba(0, 255, 0, 0.4),
+    0px 0px 60px rgba(0, 255, 0, 0.4), 0px 0px 70px rgba(0, 255, 0, 0.4);
+}
+
+.generator-wrapper {
+  min-height: 100vh;
+}
+
+.generator-wrapper:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/css-pattern-by-magicpattern.png") repeat;
+  box-shadow: inset 0 0 2000px rgba(0, 255, 0, 1);
+  opacity: 0.1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  filter: blur(2px);
+}
+
+.bg-glow-green {
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.04),
+    0px 0px 20px rgba(255, 255, 255, 0.04),
+    0px 0px 30px rgba(255, 255, 255, 0.04),
+    0px 0px 40px rgba(255, 255, 255, 0.04),
+    0px 0px 50px rgba(255, 255, 255, 0.04),
+    0px 0px 60px rgba(255, 255, 255, 0.04),
+    0px 0px 70px rgba(255, 255, 255, 0.04);
+}

@@ -39,6 +39,18 @@ interface Data {
 export const data: Data = {
   navMain: [
     {
+      title: "Battlers",
+      items: [
+        {
+          title: "Github Battler",
+          description: "Generate a Github Battler",
+          url: "/generators/github-battler",
+          icon: faSword,
+          isActive: false,
+        },
+      ],
+    },
+    {
       title: "Design & Content",
       items: [
         {

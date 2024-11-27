@@ -5,6 +5,7 @@ import ColourPalette from "./ColourPalette";
 import Excuse from "./Excuse";
 import FantasyName from "./FantasyName";
 import FontPairing from "./FontPairing";
+import GithubBattler from "./GithubBattler";
 import LoremIpsom from "./LoremIpsom";
 import MoodPlaylist from "./MoodPlaylist";
 import Nickname from "./Nickname";
@@ -31,7 +32,8 @@ export type Generator =
   | "writing-prompt"
   | "mood-playlist"
   | "roman-empire-fact"
-  | "bit-visualizer";
+  | "bit-visualizer"
+  | "github-battler";
 export const getGenerator = (type: Generator) => {
   switch (type) {
     case "colour-palette":
@@ -66,6 +68,8 @@ export const getGenerator = (type: Generator) => {
       return RandomRomanFact;
     case "bit-visualizer":
       return BitVisualizer;
+    case "github-battler":
+      return GithubBattler;
     default:
       return () => null;
   }
