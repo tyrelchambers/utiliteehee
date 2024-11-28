@@ -1,10 +1,18 @@
 "use client";
 import { generateImagePrompt } from "@/actions/chats";
-import { createCardImage, getGithubProfile } from "@/actions/github-battler";
+import {
+  createCardImage,
+  getFighers,
+  getGithubProfile,
+  getUser,
+} from "@/actions/github-battler";
+import Leaderboards from "@/components/github-battler/Leaderboards";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { useSidebar } from "@/components/ui/sidebar";
 import GeneratorWrapper from "@/layouts/GeneratorWrapper";
+import { saveToLocalStorage } from "@/lib/utils";
 import { ProfileInfo } from "@/utils/githubBattlerHelpers";
 import { faBolt } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,31 +32,55 @@ const GithubBattler = () => {
   const [profileInfo, setProfileInfo] = React.useState<ProfileInfo | null>(
     null
   );
+  const [leaderboards, setLeaderboards] = React.useState<ProfileInfo[]>([]);
+
+  useEffect(() => {
+    const fn = async () => {
+      const existingUser = window.localStorage.getItem(
+        "github-battler-username"
+      );
+
+      if (!existingUser) return;
+
+      const user = await getUser(existingUser);
+      if (!user) {
+        return;
+      }
+
+      setProfileInfo(user);
+    };
+    fn();
+  }, []);
 
   useEffect(() => {
     setOpen(false);
+    const fn = async () => {
+      const ld = await getFighers();
+      setLeaderboards(ld);
+    };
+
+    fn();
   }, []);
 
   const generate = async () => {
     if (!username) return;
+    saveToLocalStorage("github-battler-username", username);
     setLoading(true);
     const profile = await getGithubProfile(username);
     setProfileInfo(profile);
 
-    // const generatedPrompt = await generateImagePrompt(profile);
-    // const image = await createCardImage(generatedPrompt);
+    const generatedPrompt = await generateImagePrompt(profile);
+    const image = await createCardImage(generatedPrompt);
 
-    // setImageBlob(image);
+    setImageBlob(image);
     setLoading(false);
   };
 
   return (
-    <GeneratorWrapper title="Github Battler" favourite={fav}>
+    <GeneratorWrapper title="Github Ranker" favourite={fav}>
       <section className="max-w-screen-md mx-auto flex flex-col  items-center">
-        <h2 className="h2">Create your fighter</h2>
-        <p className="text-muted-foreground mb-2">
-          Create your fighter card by inputting your Github username.
-        </p>
+        <h2 className="h2">Add your profile to the ranks</h2>
+
         <div className="flex items-center gap-3 w-full">
           <Input
             placeholder="Your Github username"
@@ -126,6 +158,8 @@ const GithubBattler = () => {
             <div className="player-card"></div>
           </>
         )}
+        <Separator className="my-10 max-w-screen-lg mx-auto" />
+        <Leaderboards data={leaderboards} />
       </section>
     </GeneratorWrapper>
   );

@@ -3,6 +3,7 @@
 import { octokit } from "@/lib/github";
 import { calcPowerLevel, ProfileInfo } from "@/utils/githubBattlerHelpers";
 import { Octokit } from "octokit";
+import { prisma } from "../../prisma/client";
 
 export const createCardImage = async (prompt: string) => {
   const convertToSnakecase = (str: string) =>
@@ -65,6 +66,8 @@ export const getGithubProfile = async (username: string) => {
 
   profileInfo.powerLevel = calcPowerLevel(profileInfo);
 
+  await saveUserToDb(profileInfo);
+
   return profileInfo;
 };
 
@@ -91,7 +94,50 @@ const repoIsEmpty = async (api: Octokit, owner: string, repo: string) => {
   try {
     await api.rest.repos.getContent({ owner, repo, path: "" });
     return false;
-  } catch (error) {
+  } catch {
     return true;
   }
+};
+
+export const getFighers = async () => {
+  return await prisma.githubFighter.findMany({
+    take: 100,
+    orderBy: {
+      powerLevel: "desc",
+    },
+  });
+};
+
+const saveUserToDb = async (info: ProfileInfo) => {
+  const exists = await prisma.githubFighter.findFirst({
+    where: {
+      username: info.username,
+    },
+  });
+
+  if (exists) {
+    return;
+  }
+  console.log("Saving user to db", info);
+
+  await prisma.githubFighter.create({
+    data: {
+      username: info.username,
+      bio: info.bio ?? "",
+      commits: info.commits,
+      repos: info.repos,
+      followers: info.followers,
+      stars: info.stars,
+      powerLevel: info.powerLevel,
+      avatarUrl: info.avatarUrl ?? "",
+    },
+  });
+};
+
+export const getUser = async (username: string) => {
+  return await prisma.githubFighter.findFirst({
+    where: {
+      username,
+    },
+  });
 };
