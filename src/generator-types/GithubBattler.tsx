@@ -69,10 +69,10 @@ const GithubBattler = () => {
     const profile = await getGithubProfile(username);
     setProfileInfo(profile);
 
-    const generatedPrompt = await generateImagePrompt(profile);
-    const image = await createCardImage(generatedPrompt);
+    // const generatedPrompt = await generateImagePrompt(profile);
+    // const image = await createCardImage(generatedPrompt);
 
-    setImageBlob(image);
+    // setImageBlob(image);
     setLoading(false);
   };
 
@@ -96,7 +96,8 @@ const GithubBattler = () => {
         {loading && (
           <div className="flex flex-col gap-3 my-6 items-center bg-secondary p-3 rounded-xl">
             <p>
-              Generating fights, please don&apos;t go. I&apos;m doing something.
+              Generating profile stats, please don&apos;t go. I&apos;m doing
+              something.
             </p>
             <iframe
               src="https://giphy.com/embed/adWFYC5ugCEIImQ4pK"
@@ -106,14 +107,6 @@ const GithubBattler = () => {
               className="giphy-embed"
             ></iframe>
           </div>
-        )}
-        {imageBlob && (
-          <Image
-            src={imageBlob ? URL.createObjectURL(imageBlob) : ""}
-            alt=""
-            width="400"
-            height="600"
-          />
         )}
       </section>
       <section>
