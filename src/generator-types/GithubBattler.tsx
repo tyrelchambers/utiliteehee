@@ -89,7 +89,7 @@ const GithubBattler = () => {
             value={username}
           />
           <Button onClick={generate} type="button">
-            Create fighter
+            Add profile
           </Button>
         </div>
 
