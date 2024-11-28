@@ -22,3 +22,15 @@ model GeneratorStats {
   name String @unique
   runs Int
 }
+
+model GithubFighter {
+  id         String @id @default(uuid())
+  username   String
+  avatarUrl  String
+  bio        String
+  commits    Int
+  repos      Int
+  followers  Int
+  stars      Int
+  powerLevel Int
+}
