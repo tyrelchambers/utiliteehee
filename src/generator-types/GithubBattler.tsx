@@ -1,7 +1,5 @@
 "use client";
-import { generateImagePrompt } from "@/actions/chats";
 import {
-  createCardImage,
   getFighers,
   getGithubProfile,
   getUser,
@@ -28,7 +26,7 @@ const GithubBattler = () => {
   const { setOpen } = useSidebar();
   const [username, setUsername] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const [imageBlob, setImageBlob] = React.useState<Blob | null>(null);
+  // const [imageBlob, setImageBlob] = React.useState<Blob | null>(null);
   const [profileInfo, setProfileInfo] = React.useState<ProfileInfo | null>(
     null
   );
