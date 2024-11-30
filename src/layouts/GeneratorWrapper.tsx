@@ -5,6 +5,7 @@ import Heading from "@/components/Heading";
 import { Badge } from "@/components/ui/badge";
 import { useStats } from "@/hooks/useStats";
 import { Favourite } from "@/lib/dexie";
+import clsx from "clsx";
 import React, { useEffect } from "react";
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
   description?: string;
   badgeLabel?: string;
   favourite: Favourite;
+  classes?: string;
 }
 
 const GeneratorWrapper = ({
@@ -21,6 +23,7 @@ const GeneratorWrapper = ({
   description,
   favourite,
   badgeLabel,
+  classes,
 }: Props) => {
   const { stats } = useStats(favourite.name);
 
@@ -29,7 +32,7 @@ const GeneratorWrapper = ({
   }, []);
 
   return (
-    <section className="section overflow-x-auto  generator-wrapper">
+    <section className={clsx("section overflow-x-auto", classes)}>
       <div className="relative z-10">
         <header className="mb-10">
           <GenStats stats={stats} />

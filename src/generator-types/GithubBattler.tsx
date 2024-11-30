@@ -75,7 +75,11 @@ const GithubBattler = () => {
   };
 
   return (
-    <GeneratorWrapper title="Github Ranker" favourite={fav}>
+    <GeneratorWrapper
+      title="Github Ranker"
+      favourite={fav}
+      classes="generator-wrapper"
+    >
       <section className="max-w-screen-md mx-auto flex flex-col  items-center">
         <h2 className="h2">Add your profile to the ranks</h2>
 
