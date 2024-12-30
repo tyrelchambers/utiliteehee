@@ -7,7 +7,7 @@ interface FetchFont {
 const FONT_HOST_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8080"
-    : "http://font-host:8080";
+    : process.env.FONT_HOST_URL;
 
 export const fetchFont = async (font: FetchFont) => {
   const formattedName = font.name.replace(" ", "+");
